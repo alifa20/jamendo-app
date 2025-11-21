@@ -1,3 +1,4 @@
+import { colors } from '@jamendo/ui';
 import { FlashList } from '@shopify/flash-list';
 import { View, ActivityIndicator, Text, StyleSheet } from 'react-native';
 
@@ -62,6 +63,6 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 16,
-    color: '#999',
+    color: colors.text.placeholder,
   },
 });

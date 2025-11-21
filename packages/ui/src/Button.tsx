@@ -1,16 +1,35 @@
 import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
+import { colors } from './theme';
+
 export interface ButtonProps extends TouchableOpacityProps {
   title: string;
   variant?: 'primary' | 'secondary';
+  disabled?: boolean;
 }
 
-export const Button = ({ title, variant = 'primary', style, ...props }: ButtonProps) => (
+export const Button = ({
+  title,
+  variant = 'primary',
+  disabled = false,
+  style,
+  ...props
+}: ButtonProps) => (
   <TouchableOpacity
     {...props}
-    style={[$button, variant === 'primary' ? $buttonPrimary : $buttonSecondary, style]}
+    disabled={disabled}
+    style={[
+      $button,
+      variant === 'primary' ? $buttonPrimary : $buttonSecondary,
+      disabled && $buttonDisabled,
+      style,
+    ]}
   >
-    <Text style={variant === 'primary' ? $textPrimary : $textSecondary}>{title}</Text>
+    <Text
+      style={[variant === 'primary' ? $textPrimary : $textSecondary, disabled && $textDisabled]}
+    >
+      {title}
+    </Text>
   </TouchableOpacity>
 );
 
@@ -23,23 +42,38 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   $buttonPrimary: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
   },
   $buttonSecondary: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     borderWidth: 1,
-    borderColor: '#007AFF',
+    borderColor: colors.primary,
+  },
+  $buttonDisabled: {
+    backgroundColor: colors.background.disabled,
+    borderColor: colors.background.disabled,
   },
   $textPrimary: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 16,
     fontWeight: '600',
   },
   $textSecondary: {
-    color: '#007AFF',
+    color: colors.primary,
     fontSize: 16,
     fontWeight: '600',
   },
+  $textDisabled: {
+    color: colors.text.placeholder,
+  },
 });
 
-const { $button, $buttonPrimary, $buttonSecondary, $textPrimary, $textSecondary } = styles;
+const {
+  $button,
+  $buttonPrimary,
+  $buttonSecondary,
+  $buttonDisabled,
+  $textPrimary,
+  $textSecondary,
+  $textDisabled,
+} = styles;

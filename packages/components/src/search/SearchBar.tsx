@@ -1,4 +1,4 @@
-import { TextInput } from '@jamendo/ui';
+import { TextInput, colors } from '@jamendo/ui';
 import { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
@@ -39,6 +39,8 @@ export const SearchBar = ({
         clearButtonMode="while-editing"
         autoCapitalize="none"
         autoCorrect={false}
+        accessibilityLabel="Search input"
+        accessibilityHint="Enter text to search for tracks"
       />
     </View>
   );
@@ -47,9 +49,9 @@ export const SearchBar = ({
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.background.secondary,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
 });

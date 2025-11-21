@@ -1,3 +1,4 @@
+import { colors } from '@jamendo/ui';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 export interface TrackCardProps {
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 4,
-    backgroundColor: '#ddd',
+    backgroundColor: colors.border,
   },
   info: {
     flex: 1,
@@ -47,6 +48,6 @@ const styles = StyleSheet.create({
   },
   artistName: {
     fontSize: 14,
-    color: '#666',
+    color: colors.text.secondary,
   },
 });
