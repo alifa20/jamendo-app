@@ -41,6 +41,7 @@ EXPO_PUBLIC_JAMENDO_CLIENT_ID=your_client_id_here
 - The prefix `EXPO_PUBLIC_` is **required** for Expo to expose the variable to your app
 - Replace `your_client_id_here` with your actual client ID from the Jamendo developer portal
 - Add `.env` to your `.gitignore` to keep your credentials secure
+- **Build-time variables**: Environment variables are embedded at build time in Expo. After adding or modifying `.env`, restart your dev server with `npx expo start --clear` to ensure changes are picked up
 
 ### For Web Apps (Non-Expo)
 
