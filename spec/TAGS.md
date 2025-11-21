@@ -41,6 +41,8 @@ Technical concern tags
 
 | Tag | Description |
 |-----|-------------|
+| `@configuration` | Configuration files and environment setup |
+| `@environment` | Environment variables and runtime configuration |
 | `@monorepo` | Monorepo-specific features and configurations |
 | `@redux` | Redux and Redux Toolkit implementation |
 | `@rtk-query` | Redux Toolkit Query for API state management |
