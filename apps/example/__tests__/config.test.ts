@@ -4,9 +4,9 @@
  * Tests for environment variable configuration and config.ts validation.
  */
 
+import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as dotenv from 'dotenv';
 
 const APP_DIR = path.join(__dirname, '..');
 const ENV_FILE = path.join(APP_DIR, '.env');
