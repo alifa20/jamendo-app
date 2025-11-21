@@ -272,3 +272,6 @@ This project follows **ACDD (Acceptance Criteria Driven Development)** using fsp
 - **fspec Workflow**: See `spec/CLAUDE.md`
 - make sure in your commit messages or pr description or titles you dont mention claude
 - for git commit do not mention claude
+- do not mention messages  like this in git commit: 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+   Co-Authored-By: Claude <noreply@anthropic.com>
