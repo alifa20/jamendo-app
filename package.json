@@ -22,5 +22,10 @@
     "tabWidth": 2,
     "singleQuote": true,
     "trailingComma": "es5"
+  },
+  "pnpm": {
+    "overrides": {
+      "baseline-browser-mapping": "^2.8.29"
+    }
   }
 }

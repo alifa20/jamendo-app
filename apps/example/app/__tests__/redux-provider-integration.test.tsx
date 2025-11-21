@@ -14,7 +14,7 @@ import { Provider, useSelector } from 'react-redux';
 // Mock component to test Redux Provider access
 function TestComponent() {
   // @step Then all screens should have access to the Redux store
-  // Select only the jamendoApi slice to avoid selecting entire state
+  // Select only the jamendoApi slice to avoid "returned root state" warning
   const jamendoApiState = useSelector((state: RootState) => state.jamendoApi);
   return <Text testID="test-component">{JSON.stringify(jamendoApiState)}</Text>;
 }
