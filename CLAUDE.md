@@ -1,0 +1,1 @@
+- make sure for git commit messages and git pr titles you follow conventional git. If changes are related to specific package in  @packages/ or app in @apps/ use the folder name as context of that message. For example fix(...)
