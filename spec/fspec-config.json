@@ -1,0 +1,8 @@
+{
+  "agent": "claude",
+  "tools": {
+    "test": {
+      "command": "pnpm test"
+    }
+  }
+}
