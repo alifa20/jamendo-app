@@ -1,0 +1,181 @@
+{
+  "scenarios": [
+    {
+      "name": "Display search bar on home screen",
+      "testMappings": [
+        {
+          "file": "apps/example/app/(tabs)/__tests__/index.test.tsx",
+          "lines": "26-42",
+          "implMappings": [
+            {
+              "file": "apps/example/app/(tabs)/index.tsx",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Search for tracks and display results",
+      "testMappings": [
+        {
+          "file": "apps/example/app/(tabs)/__tests__/index.test.tsx",
+          "lines": "44-97",
+          "implMappings": [
+            {
+              "file": "apps/example/app/(tabs)/index.tsx",
+              "lines": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Navigate to track detail from search results",
+      "testMappings": [
+        {
+          "file": "apps/example/app/(tabs)/__tests__/index.test.tsx",
+          "lines": "99-130",
+          "implMappings": [
+            {
+              "file": "apps/example/app/(tabs)/index.tsx",
+              "lines": [
+                22,
+                23,
+                24
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scroll through search results smoothly",
+      "testMappings": [
+        {
+          "file": "apps/example/app/(tabs)/__tests__/index.test.tsx",
+          "lines": "132-161",
+          "implMappings": [
+            {
+              "file": "apps/example/app/(tabs)/index.tsx",
+              "lines": [
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalScenarios": 4,
+    "coveredScenarios": 4,
+    "coveragePercent": 100,
+    "testFiles": [
+      "apps/example/app/(tabs)/__tests__/index.test.tsx"
+    ],
+    "implFiles": [
+      "apps/example/app/(tabs)/index.tsx"
+    ],
+    "totalLinesCovered": 234
+  }
+}

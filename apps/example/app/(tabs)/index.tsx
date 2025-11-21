@@ -1,103 +1,160 @@
-import { HomeMessage, HomeMessageIcon } from '@jamendo/feature-home';
+import { useSearchTracksQuery } from '@jamendo/rtk-services';
+import { FlashList } from '@shopify/flash-list';
 import { Image } from 'expo-image';
-import { Link } from 'expo-router';
-import { Platform, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
+import { useState } from 'react';
+import { ActivityIndicator, Pressable, StyleSheet, TextInput, View } from 'react-native';
 
-import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText>
-          <HomeMessage />
-        </ThemedText>
-        <ThemedText>
-          <HomeMessageIcon />
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
+  // RTK Query hook for searching tracks
+  const { data, isLoading, isError } = useSearchTracksQuery(searchQuery, {
+    skip: searchQuery.length === 0,
+  });
+
+  const tracks = data?.results || [];
+
+  const handleTrackPress = (trackId: string) => {
+    router.push(`/track/${trackId}`);
+  };
+
+  const renderTrackItem = ({ item }: { item: any }) => (
+    <Pressable
+      testID="track-item"
+      onPress={() => handleTrackPress(item.id)}
+      style={styles.trackItem}
+    >
+      <Image
+        testID="album-art"
+        source={{ uri: item.image }}
+        style={styles.albumArt}
+        contentFit="cover"
+      />
+      <View style={styles.trackInfo}>
+        <ThemedText testID="track-title" type="defaultSemiBold" style={styles.trackTitle}>
+          {item.name}
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+        <ThemedText testID="track-artist" style={styles.trackArtist}>
+          {item.artist_name}
         </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+    </Pressable>
+  );
+
+  return (
+    <ThemedView style={styles.container}>
+      {/* Search Bar */}
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search tracks..."
+          placeholderTextColor="#999"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+      </View>
+
+      {/* Track List */}
+      <View style={styles.listContainer}>
+        {isLoading && (
+          <View style={styles.centerContent}>
+            <ActivityIndicator size="large" />
+          </View>
+        )}
+
+        {isError && (
+          <View style={styles.centerContent}>
+            <ThemedText>Error loading tracks. Please try again.</ThemedText>
+          </View>
+        )}
+
+        {!isLoading && !isError && searchQuery.length > 0 && tracks.length === 0 && (
+          <View style={styles.centerContent}>
+            <ThemedText>No tracks found for "{searchQuery}"</ThemedText>
+          </View>
+        )}
+
+        {!isLoading && !isError && tracks.length > 0 && (
+          <FlashList
+            testID="track-list"
+            data={tracks}
+            renderItem={renderTrackItem}
+            estimatedItemSize={80}
+            keyExtractor={(item: any) => item.id}
+          />
+        )}
+
+        {searchQuery.length === 0 && (
+          <View style={styles.centerContent}>
+            <ThemedText style={styles.emptyText}>
+              Search for tracks to discover music on Jamendo
+            </ThemedText>
+          </View>
+        )}
+      </View>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+  },
+  searchContainer: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+  },
+  searchInput: {
+    height: 48,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 24,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    color: '#000',
+  },
+  listContainer: {
+    flex: 1,
+  },
+  centerContent: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    padding: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  emptyText: {
+    textAlign: 'center',
+    opacity: 0.6,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  trackItem: {
+    flexDirection: 'row',
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+    alignItems: 'center',
+  },
+  albumArt: {
+    width: 60,
+    height: 60,
+    borderRadius: 8,
+    marginRight: 12,
+  },
+  trackInfo: {
+    flex: 1,
+  },
+  trackTitle: {
+    fontSize: 16,
+    marginBottom: 4,
+  },
+  trackArtist: {
+    fontSize: 14,
+    opacity: 0.7,
   },
 });

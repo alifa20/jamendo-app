@@ -2,7 +2,7 @@
   "version": "0.7.1",
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2025-11-21T11:42:03.826Z"
+    "lastUpdated": "2025-11-21T12:04:51.117Z"
   },
   "workUnits": {
     "FOUND-001": {
@@ -757,9 +757,9 @@
       "id": "JAM-006",
       "title": "Build Home page with search and track results",
       "type": "story",
-      "status": "testing",
+      "status": "done",
       "createdAt": "2025-11-21T09:26:45.533Z",
-      "updatedAt": "2025-11-21T11:42:13.371Z",
+      "updatedAt": "2025-11-21T12:04:51.128Z",
       "description": "Implement search screen at apps/example/app/(tabs)/index.tsx with SearchBar, RTK Query integration (useSearchTracksQuery), TrackList with FlashList, and navigation to track detail",
       "epic": "jamendo-app",
       "children": [],
@@ -777,6 +777,18 @@
         {
           "state": "testing",
           "timestamp": "2025-11-21T11:42:13.371Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-21T12:00:57.144Z"
+        },
+        {
+          "state": "validating",
+          "timestamp": "2025-11-21T12:03:01.118Z"
+        },
+        {
+          "state": "done",
+          "timestamp": "2025-11-21T12:04:51.128Z"
         }
       ],
       "userStory": {
@@ -867,7 +879,10 @@
       "nextNoteId": 4,
       "attachments": [
         "spec/attachments/JAM-006/ast-research-home-screen-structure.json"
-      ]
+      ],
+      "questions": [],
+      "nextQuestionId": 0,
+      "updated": "2025-11-21T12:04:51.128Z"
     },
     "JAM-007": {
       "id": "JAM-007",
@@ -923,15 +938,14 @@
       "JAM-009"
     ],
     "specifying": [],
-    "testing": [
-      "JAM-006"
-    ],
+    "testing": [],
     "implementing": [],
     "validating": [],
     "done": [
+      "JAM-006",
       "JAM-001",
-      "JAM-004",
       "JAM-005",
+      "JAM-004",
       "JAM-002",
       "FOUND-001"
     ],
