@@ -1,0 +1,11 @@
+{
+  "matches": [
+    {
+      "type": "function_declaration",
+      "name": "RootLayout",
+      "line": 12,
+      "column": 15,
+      "text": "function RootLayout() {\n  const colorScheme = useColorScheme();\n\n  return (\n    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>\n      <Stack>\n        <Stack.Screen name=\"(tabs)\" options={{ headerShown: false }} />\n        <Stack.Screen name=\"modal\" options={{ presentation: 'modal', title: 'Modal' }} />\n      </Stack>\n      <StatusBar style=\"auto\" />\n    </ThemeProvider>\n  );\n}"
+    }
+  ]
+}
