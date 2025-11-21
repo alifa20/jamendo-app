@@ -5,6 +5,7 @@
  */
 
 import { http, HttpResponse } from 'msw';
+
 import type { JamendoSearchResponse, JamendoTrackDetailResponse } from '../../types/jamendo';
 
 const BASE_URL = 'https://api.jamendo.com/v3.0';

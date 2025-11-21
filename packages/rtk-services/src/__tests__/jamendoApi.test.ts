@@ -5,6 +5,7 @@
  */
 
 import { configureStore } from '@reduxjs/toolkit';
+
 import { jamendoApi } from '../api/jamendoApi';
 
 /**
@@ -25,9 +26,7 @@ describe('Jamendo API', () => {
       const store = setupStore();
 
       // Dispatch the query
-      const result = await store.dispatch(
-        jamendoApi.endpoints.searchTracks.initiate('test')
-      );
+      const result = await store.dispatch(jamendoApi.endpoints.searchTracks.initiate('test'));
 
       // Assert response structure
       expect(result.data).toBeDefined();
@@ -49,9 +48,7 @@ describe('Jamendo API', () => {
       const store = setupStore();
 
       // Dispatch query with empty string (should trigger error in MSW handler)
-      const result = await store.dispatch(
-        jamendoApi.endpoints.searchTracks.initiate('')
-      );
+      const result = await store.dispatch(jamendoApi.endpoints.searchTracks.initiate(''));
 
       // MSW will return 400 error for empty search
       expect(result.error).toBeDefined();
@@ -63,9 +60,7 @@ describe('Jamendo API', () => {
       const store = setupStore();
 
       // Dispatch the query
-      const result = await store.dispatch(
-        jamendoApi.endpoints.getTrackDetail.initiate('1234567')
-      );
+      const result = await store.dispatch(jamendoApi.endpoints.getTrackDetail.initiate('1234567'));
 
       // Assert response structure (transformed to single track)
       expect(result.data).toBeDefined();
@@ -81,9 +76,7 @@ describe('Jamendo API', () => {
       const store = setupStore();
 
       // Dispatch query for track 2
-      const result = await store.dispatch(
-        jamendoApi.endpoints.getTrackDetail.initiate('2345678')
-      );
+      const result = await store.dispatch(jamendoApi.endpoints.getTrackDetail.initiate('2345678'));
 
       // Assert response for track 2
       expect(result.data).toBeDefined();
@@ -98,14 +91,10 @@ describe('Jamendo API', () => {
       const store = setupStore();
 
       // First request
-      const result1 = await store.dispatch(
-        jamendoApi.endpoints.searchTracks.initiate('test')
-      );
+      const result1 = await store.dispatch(jamendoApi.endpoints.searchTracks.initiate('test'));
 
       // Second request (should use cache)
-      const result2 = await store.dispatch(
-        jamendoApi.endpoints.searchTracks.initiate('test')
-      );
+      const result2 = await store.dispatch(jamendoApi.endpoints.searchTracks.initiate('test'));
 
       // Both should have data
       expect(result1.data).toBeDefined();
@@ -119,14 +108,10 @@ describe('Jamendo API', () => {
       const store = setupStore();
 
       // First request
-      const result1 = await store.dispatch(
-        jamendoApi.endpoints.getTrackDetail.initiate('1234567')
-      );
+      const result1 = await store.dispatch(jamendoApi.endpoints.getTrackDetail.initiate('1234567'));
 
       // Second request (should use cache)
-      const result2 = await store.dispatch(
-        jamendoApi.endpoints.getTrackDetail.initiate('1234567')
-      );
+      const result2 = await store.dispatch(jamendoApi.endpoints.getTrackDetail.initiate('1234567'));
 
       // Both should have data
       expect(result1.data).toBeDefined();

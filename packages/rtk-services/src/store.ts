@@ -5,6 +5,7 @@
  */
 
 import { configureStore } from '@reduxjs/toolkit';
+
 import { jamendoApi } from './api/jamendoApi';
 
 /**
@@ -18,8 +19,7 @@ export const store = configureStore({
   reducer: {
     [jamendoApi.reducerPath]: jamendoApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(jamendoApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(jamendoApi.middleware),
 });
 
 /**
