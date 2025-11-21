@@ -2,7 +2,7 @@
   "version": "0.7.1",
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2025-11-21T10:34:04.831Z"
+    "lastUpdated": "2025-11-21T10:54:39.488Z"
   },
   "workUnits": {
     "FOUND-001": {
@@ -450,9 +450,9 @@
       "id": "JAM-005",
       "title": "Integrate Redux Provider in app root layout",
       "type": "story",
-      "status": "validating",
+      "status": "done",
       "createdAt": "2025-11-21T09:26:39.216Z",
-      "updatedAt": "2025-11-21T10:45:03.955Z",
+      "updatedAt": "2025-11-21T10:54:39.498Z",
       "description": "Update apps/example/app/_layout.tsx to wrap app with Redux Provider and configure store",
       "epic": "jamendo-app",
       "children": [],
@@ -475,6 +475,10 @@
         {
           "state": "validating",
           "timestamp": "2025-11-21T10:45:03.955Z"
+        },
+        {
+          "state": "done",
+          "timestamp": "2025-11-21T10:54:39.498Z"
         }
       ],
       "userStory": {
@@ -575,7 +579,8 @@
       "nextNoteId": 1,
       "attachments": [
         "spec/attachments/JAM-005/ast-research-root-layout-structure.json"
-      ]
+      ],
+      "updated": "2025-11-21T10:54:39.498Z"
     },
     "JAM-006": {
       "id": "JAM-006",
@@ -654,10 +659,9 @@
     "implementing": [
       "JAM-001"
     ],
-    "validating": [
-      "JAM-005"
-    ],
+    "validating": [],
     "done": [
+      "JAM-005",
       "JAM-002",
       "FOUND-001"
     ],
