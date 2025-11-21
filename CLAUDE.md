@@ -271,3 +271,4 @@ This project follows **ACDD (Acceptance Criteria Driven Development)** using fsp
 - **Jamendo API**: https://developer.jamendo.com/v3.0
 - **fspec Workflow**: See `spec/CLAUDE.md`
 - make sure in your commit messages or pr description or titles you dont mention claude
+- for git commit do not mention claude
