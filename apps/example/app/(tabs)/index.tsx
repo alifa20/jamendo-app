@@ -21,7 +21,7 @@ export default function HomeScreen() {
   const tracks = data?.results || [];
 
   const handleTrackPress = (trackId: string) => {
-    router.push(`/track/${trackId}`);
+    router.push(`/track/${trackId}` as any); // TODO: Add track detail route file for proper typing
   };
 
   const renderTrackItem = ({ item }: { item: any }) => (
