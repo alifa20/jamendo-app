@@ -1,0 +1,92 @@
+{
+  "scenarios": [
+    {
+      "name": "Redux Provider wraps app at root layout",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/redux-provider-integration.test.tsx",
+          "lines": "17-52",
+          "implMappings": [
+            {
+              "file": "apps/example/app/_layout.tsx",
+              "lines": [4, 8, 19, 20, 25]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RTK Query hooks access Redux store",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/redux-provider-integration.test.tsx",
+          "lines": "54-71",
+          "implMappings": [
+            {
+              "file": "apps/example/app/_layout.tsx",
+              "lines": [4, 8, 19]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Theme switching works with Redux Provider",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/redux-provider-integration.test.tsx",
+          "lines": "73-89",
+          "implMappings": [
+            {
+              "file": "apps/example/app/_layout.tsx",
+              "lines": [18, 19, 26]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Navigation works with Redux store available",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/redux-provider-integration.test.tsx",
+          "lines": "91-108",
+          "implMappings": [
+            {
+              "file": "apps/example/app/_layout.tsx",
+              "lines": [19, 20, 21, 22, 23, 25]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Redux DevTools shows store state in development",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/redux-provider-integration.test.tsx",
+          "lines": "110-131",
+          "implMappings": [
+            {
+              "file": "packages/rtk-services/src/store.ts",
+              "lines": [24]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalScenarios": 5,
+    "coveredScenarios": 5,
+    "coveragePercent": 100,
+    "testFiles": [
+      "apps/example/app/__tests__/redux-provider-integration.test.tsx"
+    ],
+    "implFiles": [
+      "apps/example/app/_layout.tsx",
+      "packages/rtk-services/src/store.ts"
+    ],
+    "totalLinesCovered": 124
+  }
+}
