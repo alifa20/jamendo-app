@@ -1,6 +1,6 @@
-import { View, StyleSheet } from 'react-native';
 import { TextInput } from '@jamendo/ui';
 import { useState, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
 
 export interface SearchBarProps {
   value: string;

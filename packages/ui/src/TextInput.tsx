@@ -1,11 +1,7 @@
 import { StyleSheet, TextInput as RNTextInput, TextInputProps } from 'react-native';
 
 export const TextInput = ({ style, ...props }: TextInputProps) => (
-  <RNTextInput
-    {...props}
-    style={[$textInput, style]}
-    placeholderTextColor="#999"
-  />
+  <RNTextInput {...props} style={[$textInput, style]} placeholderTextColor="#999" />
 );
 
 const { $textInput } = StyleSheet.create({

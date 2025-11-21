@@ -8,15 +8,9 @@ export interface ButtonProps extends TouchableOpacityProps {
 export const Button = ({ title, variant = 'primary', style, ...props }: ButtonProps) => (
   <TouchableOpacity
     {...props}
-    style={[
-      $button,
-      variant === 'primary' ? $buttonPrimary : $buttonSecondary,
-      style,
-    ]}
+    style={[$button, variant === 'primary' ? $buttonPrimary : $buttonSecondary, style]}
   >
-    <Text style={variant === 'primary' ? $textPrimary : $textSecondary}>
-      {title}
-    </Text>
+    <Text style={variant === 'primary' ? $textPrimary : $textSecondary}>{title}</Text>
   </TouchableOpacity>
 );
 

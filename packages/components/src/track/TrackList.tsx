@@ -1,5 +1,6 @@
-import { View, ActivityIndicator, Text, StyleSheet } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
+import { View, ActivityIndicator, Text, StyleSheet } from 'react-native';
+
 import { TrackCard } from './TrackCard';
 
 export interface Track {

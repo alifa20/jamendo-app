@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
 import { Button } from '@jamendo/ui';
+import { View, Text, StyleSheet } from 'react-native';
 
 export interface ExpoAudioPlayerProps {
   audioUrl: string;
