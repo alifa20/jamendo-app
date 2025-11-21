@@ -1,0 +1,333 @@
+{
+  "version": "2.0.0",
+  "project": {
+    "name": "Jamendo Music App",
+    "vision": "A React Native music streaming app that enables users to discover, browse, and play royalty-free music from Jamendo's extensive catalog with an intuitive mobile experience",
+    "projectType": "mobile-app"
+  },
+  "problemSpace": {
+    "primaryProblem": {
+      "title": "Finding and accessing royalty-free music for content creation",
+      "description": "Content creators, video producers, and developers need access to high-quality royalty-free music for their projects, but finding, previewing, and obtaining suitable tracks from large catalogs can be time-consuming and cumbersome without a dedicated mobile interface",
+      "impact": "high"
+    }
+  },
+  "solutionSpace": {
+    "overview": "A mobile-first music streaming application that connects to Jamendo's API, providing users with search capabilities, track browsing, detailed track information, and integrated audio playback - all optimized for mobile devices",
+    "capabilities": [
+      {
+        "name": "Search Music Tracks",
+        "description": "Users can search for music tracks by name using a text-based search interface with debounced input"
+      },
+      {
+        "name": "Browse Track Results",
+        "description": "Users can view search results in an optimized, scrollable list showing track thumbnails, names, and artist information"
+      },
+      {
+        "name": "View Track Details",
+        "description": "Users can view comprehensive track information including album art, track metadata, artist details, and duration"
+      },
+      {
+        "name": "Play Audio Tracks",
+        "description": "Users can play, pause, and seek through audio tracks with visual progress indication and playback controls"
+      }
+    ]
+  },
+  "personas": [
+    {
+      "name": "Content Creator",
+      "description": "Video producers, podcasters, and digital content creators who need royalty-free music for their projects",
+      "goals": [
+        "Quickly find and preview suitable royalty-free music tracks for their content"
+      ]
+    },
+    {
+      "name": "Music Listener",
+      "description": "Casual users who want to discover and enjoy royalty-free music on their mobile devices",
+      "goals": [
+        "Browse and listen to diverse royalty-free music tracks for personal enjoyment"
+      ]
+    }
+  ],
+  "eventStorm": {
+    "level": "big_picture",
+    "items": [
+      {
+        "id": 1,
+        "type": "bounded_context",
+        "text": "Music Discovery",
+        "color": null,
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:31.886Z"
+      },
+      {
+        "id": 2,
+        "type": "bounded_context",
+        "text": "Audio Playback",
+        "color": null,
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:33.071Z"
+      },
+      {
+        "id": 3,
+        "type": "bounded_context",
+        "text": "State Management",
+        "color": null,
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:34.062Z"
+      },
+      {
+        "id": 4,
+        "type": "bounded_context",
+        "text": "API Integration",
+        "color": null,
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:35.049Z"
+      },
+      {
+        "id": 5,
+        "type": "aggregate",
+        "text": "Track",
+        "boundedContextId": 1,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:53.287Z"
+      },
+      {
+        "id": 6,
+        "type": "aggregate",
+        "text": "SearchQuery",
+        "boundedContextId": 1,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:54.480Z"
+      },
+      {
+        "id": 7,
+        "type": "aggregate",
+        "text": "TrackList",
+        "boundedContextId": 1,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:55.517Z"
+      },
+      {
+        "id": 8,
+        "type": "aggregate",
+        "text": "AudioPlayer",
+        "boundedContextId": 2,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:56.769Z"
+      },
+      {
+        "id": 9,
+        "type": "aggregate",
+        "text": "PlaybackState",
+        "boundedContextId": 2,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:57.818Z"
+      },
+      {
+        "id": 10,
+        "type": "aggregate",
+        "text": "Store",
+        "boundedContextId": 3,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:58.873Z"
+      },
+      {
+        "id": 11,
+        "type": "aggregate",
+        "text": "Cache",
+        "boundedContextId": 3,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:48:59.991Z"
+      },
+      {
+        "id": 12,
+        "type": "aggregate",
+        "text": "JamendoAPI",
+        "boundedContextId": 4,
+        "color": "yellow",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:01.114Z"
+      },
+      {
+        "id": 13,
+        "type": "event",
+        "text": "TracksSearched",
+        "boundedContextId": 1,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:18.733Z"
+      },
+      {
+        "id": 14,
+        "type": "event",
+        "text": "TrackSelected",
+        "boundedContextId": 1,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:20.062Z"
+      },
+      {
+        "id": 15,
+        "type": "event",
+        "text": "TrackListLoaded",
+        "boundedContextId": 1,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:21.198Z"
+      },
+      {
+        "id": 16,
+        "type": "event",
+        "text": "AudioStarted",
+        "boundedContextId": 2,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:22.354Z"
+      },
+      {
+        "id": 17,
+        "type": "event",
+        "text": "AudioPaused",
+        "boundedContextId": 2,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:23.501Z"
+      },
+      {
+        "id": 18,
+        "type": "event",
+        "text": "AudioSeeked",
+        "boundedContextId": 2,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:24.649Z"
+      },
+      {
+        "id": 19,
+        "type": "event",
+        "text": "DataCached",
+        "boundedContextId": 3,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:25.779Z"
+      },
+      {
+        "id": 20,
+        "type": "event",
+        "text": "CacheInvalidated",
+        "boundedContextId": 3,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:26.959Z"
+      },
+      {
+        "id": 21,
+        "type": "event",
+        "text": "APIRequestSent",
+        "boundedContextId": 4,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:28.103Z"
+      },
+      {
+        "id": 22,
+        "type": "event",
+        "text": "APIResponseReceived",
+        "boundedContextId": 4,
+        "color": "orange",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:49:29.260Z"
+      },
+      {
+        "id": 23,
+        "type": "command",
+        "text": "SearchTracks",
+        "boundedContextId": 1,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:35.818Z"
+      },
+      {
+        "id": 24,
+        "type": "command",
+        "text": "SelectTrack",
+        "boundedContextId": 1,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:37.248Z"
+      },
+      {
+        "id": 25,
+        "type": "command",
+        "text": "PlayAudio",
+        "boundedContextId": 2,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:38.597Z"
+      },
+      {
+        "id": 26,
+        "type": "command",
+        "text": "PauseAudio",
+        "boundedContextId": 2,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:39.800Z"
+      },
+      {
+        "id": 27,
+        "type": "command",
+        "text": "SeekAudio",
+        "boundedContextId": 2,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:40.982Z"
+      },
+      {
+        "id": 28,
+        "type": "command",
+        "text": "CacheData",
+        "boundedContextId": 3,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:42.147Z"
+      },
+      {
+        "id": 29,
+        "type": "command",
+        "text": "InvalidateCache",
+        "boundedContextId": 3,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:43.311Z"
+      },
+      {
+        "id": 30,
+        "type": "command",
+        "text": "FetchTracks",
+        "boundedContextId": 4,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:44.504Z"
+      },
+      {
+        "id": 31,
+        "type": "command",
+        "text": "FetchTrackDetail",
+        "boundedContextId": 4,
+        "color": "blue",
+        "deleted": false,
+        "createdAt": "2025-11-21T04:50:45.722Z"
+      }
+    ],
+    "nextItemId": 32
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "version": "0.7.1",
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-11-21T04:52:39.882Z"
+  },
+  "workUnits": {
+    "FOUND-001": {
+      "id": "FOUND-001",
+      "title": "Conduct Foundation Event Storm for Foundation",
+      "status": "done",
+      "createdAt": "2025-11-21T04:46:59.781Z",
+      "updatedAt": "2025-11-21T04:52:39.894Z",
+      "stateHistory": [
+        {
+          "state": "backlog",
+          "timestamp": "2025-11-21T04:46:59.781Z"
+        },
+        {
+          "state": "specifying",
+          "timestamp": "2025-11-21T04:47:54.865Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-21T04:52:26.148Z"
+        },
+        {
+          "state": "validating",
+          "timestamp": "2025-11-21T04:52:33.424Z"
+        },
+        {
+          "state": "done",
+          "timestamp": "2025-11-21T04:52:39.894Z"
+        }
+      ],
+      "description": "Complete the foundation by capturing domain architecture through Foundation Event Storm.\n\nUse these commands to populate foundation.json eventStorm field:\n- fspec add-foundation-bounded-context <name>\n- fspec add-aggregate-to-foundation <context> <aggregate>\n- fspec add-domain-event-to-foundation <context> <event>\n- fspec show-foundation-event-storm\n\nWhy this matters:\n- Establishes bounded contexts for domain-driven design\n- Enables tag ontology generation from domain model\n- Provides foundation for architectural documentation\n- Supports EXMAP-004 tag discovery workflow\n\nSee spec/CLAUDE.md \"Foundation Event Storm\" section for detailed guidance.",
+      "type": "task",
+      "rules": [],
+      "examples": [],
+      "questions": [],
+      "architectureNotes": [],
+      "nextRuleId": 0,
+      "nextExampleId": 0,
+      "nextQuestionId": 0,
+      "nextNoteId": 0,
+      "updated": "2025-11-21T04:52:39.894Z"
+    }
+  },
+  "states": {
+    "backlog": [],
+    "specifying": [],
+    "testing": [],
+    "implementing": [],
+    "validating": [],
+    "done": [
+      "FOUND-001"
+    ],
+    "blocked": []
+  }
+}
