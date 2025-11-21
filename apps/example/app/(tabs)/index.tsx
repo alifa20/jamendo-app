@@ -4,6 +4,7 @@ import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -47,9 +48,10 @@ export default function HomeScreen() {
   );
 
   return (
-    <ThemedView style={styles.container}>
-      {/* Search Bar */}
-      <View style={styles.searchContainer}>
+    <SafeAreaView style={styles.safeArea} edges={['top']}>
+      <ThemedView style={styles.container}>
+        {/* Search Bar */}
+        <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
           placeholder="Search tracks..."
@@ -99,11 +101,15 @@ export default function HomeScreen() {
           </View>
         )}
       </View>
-    </ThemedView>
+      </ThemedView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
   },
