@@ -8,7 +8,11 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { jamendoApi } from '../api/jamendoApi';
 import { store } from '../store';
-import type { JamendoTrack, JamendoSearchResponse, JamendoTrackDetailResponse } from '../types/jamendo';
+import type {
+  JamendoTrack,
+  JamendoSearchResponse,
+  JamendoTrackDetailResponse,
+} from '../types/jamendo';
 
 /**
  * Create a fresh store for each test
@@ -51,7 +55,9 @@ describe('Feature: Configure RTK Services package with Jamendo API', () => {
         expect(firstTrack).toHaveProperty('image');
 
         // Ensure ONLY these fields are present (no extra fields)
-        expect(Object.keys(firstTrack).sort()).toEqual(['artist_name', 'id', 'image', 'name'].sort());
+        expect(Object.keys(firstTrack).sort()).toEqual(
+          ['artist_name', 'id', 'image', 'name'].sort()
+        );
       }
     });
   });
@@ -65,7 +71,9 @@ describe('Feature: Configure RTK Services package with Jamendo API', () => {
       expect(jamendoApi.reducerPath).toBe('jamendoApi');
 
       // @step When a developer calls useGetTrackDetailQuery with track ID "12345"
-      const result = await testStore.dispatch(jamendoApi.endpoints.getTrackDetail.initiate('1234567'));
+      const result = await testStore.dispatch(
+        jamendoApi.endpoints.getTrackDetail.initiate('1234567')
+      );
 
       // @step Then an API request should be made to "/tracks" endpoint
       // @step And the request should include parameter "id=12345"
@@ -97,7 +105,9 @@ describe('Feature: Configure RTK Services package with Jamendo API', () => {
 
       // @step When a developer calls useGetTrackDetailQuery with non-existent track ID "99999999"
       // @step And the API returns an empty results array
-      const result = await testStore.dispatch(jamendoApi.endpoints.getTrackDetail.initiate('99999999'));
+      const result = await testStore.dispatch(
+        jamendoApi.endpoints.getTrackDetail.initiate('99999999')
+      );
 
       // @step Then the response should contain an error message "track not found"
       // NOTE: This test will FAIL because current implementation throws an error
@@ -137,7 +147,7 @@ describe('Feature: Configure RTK Services package with Jamendo API', () => {
   describe('Scenario: Provide TypeScript type definitions', () => {
     it('should export TypeScript types for API responses', () => {
       // @step Given the RTK services package is configured
-      const testStore = setupStore();
+      // TypeScript types are available at compile time
 
       // @step When a developer imports types from the package
       // We verify types are available by checking they can be used in type annotations
