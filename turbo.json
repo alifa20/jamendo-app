@@ -5,6 +5,9 @@
     "lint": {
       "outputs": []
     },
+    "typecheck": {
+      "outputs": []
+    },
     "test": {
       "inputs": ["**/*.{ts,tsx,js,jsx}"]
     },

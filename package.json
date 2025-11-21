@@ -5,6 +5,7 @@
     "dev": "turbo dev",
     "dev:example": "turbo dev --filter=\"{./apps/example}...\"",
     "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
     "test": "turbo test",
     "test:e2e": "maestro test apps/example/.maestro",
     "build": "turbo build",
