@@ -6,7 +6,15 @@
         {
           "file": "apps/example/__tests__/config.test.ts",
           "lines": "17-42",
-          "implMappings": []
+          "implMappings": [
+            {
+              "file": "apps/example/config.ts",
+              "lines": [
+                1,
+                28
+              ]
+            }
+          ]
         }
       ]
     },
@@ -16,7 +24,15 @@
         {
           "file": "apps/example/__tests__/config.test.ts",
           "lines": "44-69",
-          "implMappings": []
+          "implMappings": [
+            {
+              "file": "apps/example/config.ts",
+              "lines": [
+                21,
+                28
+              ]
+            }
+          ]
         }
       ]
     },
@@ -26,7 +42,15 @@
         {
           "file": "apps/example/__tests__/config.test.ts",
           "lines": "71-96",
-          "implMappings": []
+          "implMappings": [
+            {
+              "file": "apps/example/config.ts",
+              "lines": [
+                11,
+                16
+              ]
+            }
+          ]
         }
       ]
     },
@@ -36,7 +60,14 @@
         {
           "file": "apps/example/__tests__/config.test.ts",
           "lines": "100-116",
-          "implMappings": []
+          "implMappings": [
+            {
+              "file": ".gitignore",
+              "lines": [
+                24
+              ]
+            }
+          ]
         }
       ]
     },
@@ -46,7 +77,15 @@
         {
           "file": "apps/example/__tests__/config.test.ts",
           "lines": "119-142",
-          "implMappings": []
+          "implMappings": [
+            {
+              "file": "apps/example/.env.example",
+              "lines": [
+                1,
+                4
+              ]
+            }
+          ]
         }
       ]
     },
@@ -56,7 +95,15 @@
         {
           "file": "apps/example/__tests__/config.test.ts",
           "lines": "145-170",
-          "implMappings": []
+          "implMappings": [
+            {
+              "file": "apps/example/config.ts",
+              "lines": [
+                21,
+                28
+              ]
+            }
+          ]
         }
       ]
     }
@@ -68,7 +115,11 @@
     "testFiles": [
       "apps/example/__tests__/config.test.ts"
     ],
-    "implFiles": [],
-    "totalLinesCovered": 145
+    "implFiles": [
+      "apps/example/config.ts",
+      ".gitignore",
+      "apps/example/.env.example"
+    ],
+    "totalLinesCovered": 156
   }
 }

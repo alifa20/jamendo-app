@@ -436,9 +436,9 @@
       "id": "JAM-004",
       "title": "Configure environment variables and Jamendo API client",
       "type": "story",
-      "status": "testing",
+      "status": "implementing",
       "createdAt": "2025-11-21T09:26:32.154Z",
-      "updatedAt": "2025-11-21T10:29:25.577Z",
+      "updatedAt": "2025-11-21T10:43:27.449Z",
       "description": "Setup .env file with EXPO_PUBLIC_JAMENDO_CLIENT_ID, update app.json for environment variables, create config.ts constants file",
       "epic": "jamendo-app",
       "children": [],
@@ -453,6 +453,10 @@
         {
           "state": "testing",
           "timestamp": "2025-11-21T10:29:25.577Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-21T10:43:27.449Z"
         }
       ],
       "userStory": {
@@ -674,11 +678,10 @@
       "JAM-009"
     ],
     "specifying": [],
-    "testing": [
-      "JAM-004"
-    ],
+    "testing": [],
     "implementing": [
-      "JAM-001"
+      "JAM-001",
+      "JAM-004"
     ],
     "validating": [],
     "done": [
