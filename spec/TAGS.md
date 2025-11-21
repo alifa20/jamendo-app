@@ -13,6 +13,7 @@ Phase identification tags
 | Tag | Description |
 |-----|-------------|
 | `@high` | High priority features that should be implemented early |
+
 ### Component Tags (Required)
 
 Architectural component tags
@@ -20,6 +21,7 @@ Architectural component tags
 | Tag | Description |
 |-----|-------------|
 | `@api` | API integration and networking components |
+| `@app` | Application-level components and root layout |
 | `@infrastructure` | Infrastructure and setup-related components |
 | `@services` | Service layer and business logic |
 
@@ -31,6 +33,7 @@ Functional area tags
 |-----|-------------|
 | `@api-integration` | API integration and external service connectivity |
 | `@dependency-management` | Package and dependency management features |
+| `@state-management` | State management and Redux integration features |
 
 ### Technical Tags
 
@@ -39,6 +42,7 @@ Technical concern tags
 | Tag | Description |
 |-----|-------------|
 | `@monorepo` | Monorepo-specific features and configurations |
+| `@redux` | Redux and Redux Toolkit implementation |
 | `@rtk-query` | Redux Toolkit Query for API state management |
 | `@typescript` | TypeScript type definitions and interfaces |
 
@@ -53,6 +57,7 @@ Implementation priority tags
 | Tag | Description |
 |-----|-------------|
 | `@high` | High priority features requiring early implementation |
+
 ### Status Tags
 
 Development status tags
@@ -84,7 +89,7 @@ Automation integration tags
 
 ## Tag Statistics
 
-_Last updated: 2025-11-21T09:51:20.040Z_
+_Last updated: 2025-11-21T10:30:12.666Z_
 
 **Update Command**: `fspec tag-stats`
 
