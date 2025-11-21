@@ -20,6 +20,16 @@ This app demonstrates a Redux-based music browsing and playback experience with 
 - **Turborepo** - Monorepo build system
 - **React Native Audio Pro** - Media playback
 
+### Development Tools
+
+- **[Claude Code](https://claude.ai/code)** - AI-assisted development and code generation
+  - Parallel AI agents for concurrent task execution
+  - Advanced prompt engineering for high-quality code output
+- **Advanced Git Techniques** - Efficient workflow management
+  - Git worktree for parallel feature development
+  - Branch management and isolation strategies
+- **[fspec](https://fspec.dev/)** - Acceptance Criteria Driven Development (ACDD) and specification management
+
 ## Prerequisites
 
 - Node.js 18+ installed
