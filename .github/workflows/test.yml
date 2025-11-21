@@ -15,7 +15,7 @@ env:
   EXPO_USE_FAST_RESOLVER: true # Use the faster Metro resolver in SDK 51
 
 jobs:
-  packages:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repository
@@ -27,15 +27,35 @@ jobs:
       - name: ✅ Lint packages
         run: pnpm run -w lint
 
+  build:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+
       - name: 👷 Build packages
         run: pnpm run -w build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
 
       - name: 🧪 Test packages
         run: pnpm run -w test
 
   e2e:
     runs-on: macos-14
-    needs: packages
+    needs: [lint, build, test]
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v4
