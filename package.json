@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "@jamendo/monorepo",
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:example": "turbo dev --filter=\"{./apps/example}...\"",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "build": "turbo build",
+    "build:example": "turbo build --filter=\"...{./apps/example}\"",
+    "ios": "pnpm --filter @jamendo/app-example ios",
+    "android": "pnpm --filter @jamendo/app-example android",
+    "web": "pnpm --filter @jamendo/app-example web"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.2"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
