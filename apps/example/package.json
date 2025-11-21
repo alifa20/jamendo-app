@@ -7,7 +7,7 @@
     "dev": "expo start",
     "lint": "eslint --ext js,ts,tsx .",
     "typecheck": "tsc --noEmit",
-    "test": "jest",
+    "test": "echo 'UI tests are handled by Maestro' && exit 0",
     "build": "expo export --output-dir ./build --platform all",
     "start": "expo start",
     "android": "expo run:android",
@@ -75,8 +75,5 @@
         }
       }
     ]
-  },
-  "jest": {
-    "preset": "jest-expo"
   }
 }
