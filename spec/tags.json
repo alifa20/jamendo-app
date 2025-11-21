@@ -1,0 +1,133 @@
+{
+  "categories": [
+    {
+      "name": "Phase Tags",
+      "description": "Phase identification tags",
+      "required": true,
+      "tags": []
+    },
+    {
+      "name": "Component Tags",
+      "description": "Architectural component tags",
+      "required": true,
+      "tags": [
+        {
+          "name": "@api",
+          "description": "API integration and networking components"
+        },
+        {
+          "name": "@services",
+          "description": "Service layer and business logic"
+        }
+      ]
+    },
+    {
+      "name": "Feature Group Tags",
+      "description": "Functional area tags",
+      "required": true,
+      "tags": [
+        {
+          "name": "@api-integration",
+          "description": "API integration and external service connectivity"
+        }
+      ]
+    },
+    {
+      "name": "Technical Tags",
+      "description": "Technical concern tags",
+      "required": false,
+      "tags": [
+        {
+          "name": "@rtk-query",
+          "description": "Redux Toolkit Query for API state management"
+        },
+        {
+          "name": "@typescript",
+          "description": "TypeScript type definitions and interfaces"
+        }
+      ]
+    },
+    {
+      "name": "Platform Tags",
+      "description": "Platform-specific tags",
+      "required": false,
+      "tags": []
+    },
+    {
+      "name": "Priority Tags",
+      "description": "Implementation priority tags",
+      "required": false,
+      "tags": [
+        {
+          "name": "@high",
+          "description": "High priority features requiring early implementation"
+        }
+      ]
+    },
+    {
+      "name": "Status Tags",
+      "description": "Development status tags",
+      "required": false,
+      "tags": [
+        {
+          "name": "@done",
+          "description": "Completed and verified features"
+        }
+      ]
+    },
+    {
+      "name": "Testing Tags",
+      "description": "Test-related tags",
+      "required": false,
+      "tags": []
+    },
+    {
+      "name": "Automation Tags",
+      "description": "Automation integration tags",
+      "required": false,
+      "tags": []
+    }
+  ],
+  "combinationExamples": [],
+  "usageGuidelines": {
+    "requiredCombinations": {
+      "title": "",
+      "requirements": [],
+      "minimumExample": ""
+    },
+    "recommendedCombinations": {
+      "title": "",
+      "includes": [],
+      "recommendedExample": ""
+    },
+    "orderingConvention": {
+      "title": "",
+      "order": [],
+      "example": ""
+    }
+  },
+  "addingNewTags": {
+    "process": [],
+    "namingConventions": [],
+    "antiPatterns": {
+      "dont": [],
+      "do": []
+    }
+  },
+  "queries": {
+    "title": "",
+    "examples": []
+  },
+  "statistics": {
+    "lastUpdated": "2025-11-21T09:51:20.040Z",
+    "phaseStats": [],
+    "componentStats": [],
+    "featureGroupStats": [],
+    "updateCommand": "fspec tag-stats"
+  },
+  "validation": {
+    "rules": [],
+    "commands": []
+  },
+  "references": []
+}

@@ -65,7 +65,16 @@ export const handlers = [
 
     // Track detail request (by ID)
     if (id) {
-      const track = id === '1234567' ? mockTracks.track1 : mockTracks.track2;
+      let track;
+      let resultsCount = 0;
+
+      if (id === '1234567') {
+        track = mockTracks.track1;
+        resultsCount = 1;
+      } else if (id === '2345678') {
+        track = mockTracks.track2;
+        resultsCount = 1;
+      }
 
       const response: JamendoTrackDetailResponse = {
         headers: {
@@ -73,9 +82,9 @@ export const handlers = [
           code: 0,
           error_message: '',
           warnings: '',
-          results_count: 1,
+          results_count: resultsCount,
         },
-        results: [track],
+        results: track ? [track] : [],
       };
 
       return HttpResponse.json(response);

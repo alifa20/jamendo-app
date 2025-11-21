@@ -1,0 +1,162 @@
+{
+  "scenarios": [
+    {
+      "name": "Search for tracks with minimal fields",
+      "testMappings": [
+        {
+          "file": "packages/rtk-services/src/__tests__/jamendoApi.test.ts",
+          "lines": "27-56",
+          "implMappings": [
+            {
+              "file": "packages/rtk-services/src/api/jamendoApi.ts",
+              "lines": [
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get track details with full fields",
+      "testMappings": [
+        {
+          "file": "packages/rtk-services/src/__tests__/jamendoApi.test.ts",
+          "lines": "60-87",
+          "implMappings": [
+            {
+              "file": "packages/rtk-services/src/api/jamendoApi.ts",
+              "lines": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Handle track not found gracefully",
+      "testMappings": [
+        {
+          "file": "packages/rtk-services/src/__tests__/jamendoApi.test.ts",
+          "lines": "91-112",
+          "implMappings": [
+            {
+              "file": "packages/rtk-services/src/api/jamendoApi.ts",
+              "lines": [
+                66,
+                67,
+                68,
+                69,
+                70
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Configure Redux store with RTK Query",
+      "testMappings": [
+        {
+          "file": "packages/rtk-services/src/__tests__/jamendoApi.test.ts",
+          "lines": "116-134",
+          "implMappings": [
+            {
+              "file": "packages/rtk-services/src/store.ts",
+              "lines": [
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Provide TypeScript type definitions",
+      "testMappings": [
+        {
+          "file": "packages/rtk-services/src/__tests__/jamendoApi.test.ts",
+          "lines": "138-189",
+          "implMappings": [
+            {
+              "file": "packages/rtk-services/src/types/jamendo.ts",
+              "lines": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalScenarios": 5,
+    "coveredScenarios": 5,
+    "coveragePercent": 100,
+    "testFiles": [
+      "packages/rtk-services/src/__tests__/jamendoApi.test.ts"
+    ],
+    "implFiles": [
+      "packages/rtk-services/src/api/jamendoApi.ts",
+      "packages/rtk-services/src/store.ts",
+      "packages/rtk-services/src/types/jamendo.ts"
+    ],
+    "totalLinesCovered": 215
+  }
+}

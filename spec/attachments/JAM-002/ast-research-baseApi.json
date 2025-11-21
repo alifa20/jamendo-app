@@ -1,0 +1,16 @@
+{
+  "matches": [
+    {
+      "type": "arrow_function",
+      "line": 21,
+      "column": 20,
+      "text": "(headers) => {\n      headers.set('Accept', 'application/json');\n      return headers;\n    }"
+    },
+    {
+      "type": "arrow_function",
+      "line": 26,
+      "column": 13,
+      "text": "() => ({})"
+    }
+  ]
+}
