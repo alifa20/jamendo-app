@@ -13,6 +13,7 @@
     "web": "pnpm --filter @jamendo/app-example web"
   },
   "devDependencies": {
+    "baseline-browser-mapping": "^2.8.29",
     "turbo": "^2.5.6",
     "typescript": "^5.9.2"
   },

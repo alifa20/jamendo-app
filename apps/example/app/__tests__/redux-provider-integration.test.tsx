@@ -14,8 +14,9 @@ import { Provider, useSelector } from 'react-redux';
 // Mock component to test Redux Provider access
 function TestComponent() {
   // @step Then all screens should have access to the Redux store
-  const storeState = useSelector((state: RootState) => state);
-  return <Text testID="test-component">{JSON.stringify(storeState)}</Text>;
+  // Select only the jamendoApi slice to avoid selecting entire state
+  const jamendoApiState = useSelector((state: RootState) => state.jamendoApi);
+  return <Text testID="test-component">{JSON.stringify(jamendoApiState)}</Text>;
 }
 
 describe('Feature: Integrate Redux Provider in app root layout', () => {
