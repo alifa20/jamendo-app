@@ -17,8 +17,16 @@
       "required": true,
       "tags": [
         {
+          "name": "@api",
+          "description": "API integration and networking components"
+        },
+        {
           "name": "@infrastructure",
           "description": "Infrastructure and setup-related components"
+        },
+        {
+          "name": "@services",
+          "description": "Service layer and business logic"
         }
       ]
     },
@@ -27,6 +35,10 @@
       "description": "Functional area tags",
       "required": true,
       "tags": [
+        {
+          "name": "@api-integration",
+          "description": "API integration and external service connectivity"
+        },
         {
           "name": "@dependency-management",
           "description": "Package and dependency management features"
@@ -41,6 +53,14 @@
         {
           "name": "@monorepo",
           "description": "Monorepo-specific features and configurations"
+        },
+        {
+          "name": "@rtk-query",
+          "description": "Redux Toolkit Query for API state management"
+        },
+        {
+          "name": "@typescript",
+          "description": "TypeScript type definitions and interfaces"
         }
       ]
     },
@@ -54,13 +74,22 @@
       "name": "Priority Tags",
       "description": "Implementation priority tags",
       "required": false,
-      "tags": []
+      "tags": [
+        {
+          "name": "@high",
+          "description": "High priority features requiring early implementation"
+        }
+      ]
     },
     {
       "name": "Status Tags",
       "description": "Development status tags",
       "required": false,
       "tags": [
+        {
+          "name": "@done",
+          "description": "Completed and verified features"
+        },
         {
           "name": "@setup",
           "description": "Setup and initialization work in progress"
@@ -111,7 +140,7 @@
     "examples": []
   },
   "statistics": {
-    "lastUpdated": "2025-11-21T09:45:25.113Z",
+    "lastUpdated": "2025-11-21T09:51:20.040Z",
     "phaseStats": [],
     "componentStats": [],
     "featureGroupStats": [],

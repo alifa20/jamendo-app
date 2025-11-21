@@ -1,0 +1,10 @@
+{
+  "matches": [
+    {
+      "type": "arrow_function",
+      "line": 22,
+      "column": 14,
+      "text": "(getDefaultMiddleware) => getDefaultMiddleware().concat(jamendoApi.middleware)"
+    }
+  ]
+}
