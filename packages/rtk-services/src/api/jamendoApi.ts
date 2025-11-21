@@ -66,7 +66,7 @@ export const jamendoApi = baseApi.injectEndpoints({
       transformResponse: (response: JamendoTrackDetailResponse) => {
         // Extract first track from results array
         if (!response.results?.length) {
-          throw new Error('Track not found');
+          return { error: 'track not found' } as any;
         }
         return response.results[0];
       },

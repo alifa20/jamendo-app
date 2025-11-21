@@ -1,0 +1,28 @@
+{
+  "matches": [
+    {
+      "type": "arrow_function",
+      "line": 21,
+      "column": 13,
+      "text": "(builder) => ({\n    /**\n     * Search tracks with minimal fields for list view\n     *\n     * Optimized API call requesting only essential fields:\n     * - id: Track identifier\n     * - name: Track title\n     * - artist_name: Artist name\n     * - image: Album artwork URL\n     */\n    searchTracks: builder.query<JamendoSearchResponse, string>({\n      query: (searchTerm) => ({\n        url: '/tracks',\n        params: {\n          client_id: process.env.EXPO_PUBLIC_JAMENDO_CLIENT_ID,\n          format: 'json',\n          namesearch: searchTerm,\n          limit: 20,\n          // Minimal fields for list view\n          include: 'id name artist_name image',\n        },\n      }),\n    }),\n\n    /**\n     * Get track detail with full fields\n     *\n     * Fetches complete track information including:\n     * - All metadata (album, duration, release date, etc.)\n     * - Audio playback URL\n     * - License information\n     * - Music info and lyrics (if available)\n     */\n    getTrackDetail: builder.query<JamendoTrack, string>({\n      query: (trackId) => ({\n        url: '/tracks',\n        params: {\n          client_id: process.env.EXPO_PUBLIC_JAMENDO_CLIENT_ID,\n          format: 'json',\n          id: trackId,\n          // Full fields for detail view\n          include: 'musicinfo+lyrics',\n          audioformat: 'mp31',\n        },\n      }),\n      transformResponse: (response: JamendoTrackDetailResponse) => {\n        // Extract first track from results array\n        if (!response.results?.length) {\n          throw new Error('Track not found');\n        }\n        return response.results[0];\n      },\n    }),\n  })"
+    },
+    {
+      "type": "arrow_function",
+      "line": 32,
+      "column": 13,
+      "text": "(searchTerm) => ({\n        url: '/tracks',\n        params: {\n          client_id: process.env.EXPO_PUBLIC_JAMENDO_CLIENT_ID,\n          format: 'json',\n          namesearch: searchTerm,\n          limit: 20,\n          // Minimal fields for list view\n          include: 'id name artist_name image',\n        },\n      })"
+    },
+    {
+      "type": "arrow_function",
+      "line": 55,
+      "column": 13,
+      "text": "(trackId) => ({\n        url: '/tracks',\n        params: {\n          client_id: process.env.EXPO_PUBLIC_JAMENDO_CLIENT_ID,\n          format: 'json',\n          id: trackId,\n          // Full fields for detail view\n          include: 'musicinfo+lyrics',\n          audioformat: 'mp31',\n        },\n      })"
+    },
+    {
+      "type": "arrow_function",
+      "line": 66,
+      "column": 25,
+      "text": "(response: JamendoTrackDetailResponse) => {\n        // Extract first track from results array\n        if (!response.results?.length) {\n          throw new Error('Track not found');\n        }\n        return response.results[0];\n      }"
+    }
+  ]
+}
