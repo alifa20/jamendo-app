@@ -6,6 +6,7 @@
     "dev:example": "turbo dev --filter=\"{./apps/example}...\"",
     "lint": "turbo lint",
     "test": "turbo test",
+    "test:e2e": "maestro test apps/example/.maestro",
     "build": "turbo build",
     "build:example": "turbo build --filter=\"...{./apps/example}\"",
     "ios": "pnpm --filter @jamendo/app-example ios",
