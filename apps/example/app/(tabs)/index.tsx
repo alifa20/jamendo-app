@@ -52,55 +52,55 @@ export default function HomeScreen() {
       <ThemedView style={styles.container}>
         {/* Search Bar */}
         <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search tracks..."
-          placeholderTextColor="#999"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-      </View>
-
-      {/* Track List */}
-      <View style={styles.listContainer}>
-        {isLoading && (
-          <View style={styles.centerContent}>
-            <ActivityIndicator size="large" />
-          </View>
-        )}
-
-        {isError && (
-          <View style={styles.centerContent}>
-            <ThemedText>Error loading tracks. Please try again.</ThemedText>
-          </View>
-        )}
-
-        {!isLoading && !isError && searchQuery.length > 0 && tracks.length === 0 && (
-          <View style={styles.centerContent}>
-            <ThemedText>No tracks found for "{searchQuery}"</ThemedText>
-          </View>
-        )}
-
-        {!isLoading && !isError && tracks.length > 0 && (
-          <FlashList
-            testID="track-list"
-            data={tracks}
-            renderItem={renderTrackItem}
-            estimatedItemSize={80}
-            keyExtractor={(item: any) => item.id}
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search tracks..."
+            placeholderTextColor="#999"
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            autoCapitalize="none"
+            autoCorrect={false}
           />
-        )}
+        </View>
 
-        {searchQuery.length === 0 && (
-          <View style={styles.centerContent}>
-            <ThemedText style={styles.emptyText}>
-              Search for tracks to discover music on Jamendo
-            </ThemedText>
-          </View>
-        )}
-      </View>
+        {/* Track List */}
+        <View style={styles.listContainer}>
+          {isLoading && (
+            <View style={styles.centerContent}>
+              <ActivityIndicator size="large" />
+            </View>
+          )}
+
+          {isError && (
+            <View style={styles.centerContent}>
+              <ThemedText>Error loading tracks. Please try again.</ThemedText>
+            </View>
+          )}
+
+          {!isLoading && !isError && searchQuery.length > 0 && tracks.length === 0 && (
+            <View style={styles.centerContent}>
+              <ThemedText>No tracks found for "{searchQuery}"</ThemedText>
+            </View>
+          )}
+
+          {!isLoading && !isError && tracks.length > 0 && (
+            <FlashList
+              testID="track-list"
+              data={tracks}
+              renderItem={renderTrackItem}
+              estimatedItemSize={80}
+              keyExtractor={(item: any) => item.id}
+            />
+          )}
+
+          {searchQuery.length === 0 && (
+            <View style={styles.centerContent}>
+              <ThemedText style={styles.emptyText}>
+                Search for tracks to discover music on Jamendo
+              </ThemedText>
+            </View>
+          )}
+        </View>
       </ThemedView>
     </SafeAreaView>
   );
