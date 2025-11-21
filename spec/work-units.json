@@ -44,10 +44,22 @@
       "nextQuestionId": 0,
       "nextNoteId": 0,
       "updated": "2025-11-21T04:52:39.894Z"
+    },
+    "COMP-001": {
+      "id": "COMP-001",
+      "title": "Simplify SearchBar debounce implementation",
+      "type": "task",
+      "status": "backlog",
+      "createdAt": "2025-11-21T05:45:28.484Z",
+      "updatedAt": "2025-11-21T05:45:28.484Z",
+      "description": "Refactor SearchBar component to use a single useEffect or custom hook for debouncing, eliminating the dependency array issue with onChangeText callback. Current implementation has two useEffect hooks that can cause unnecessary re-renders when parent doesn't memoize the callback.",
+      "children": []
     }
   },
   "states": {
-    "backlog": [],
+    "backlog": [
+      "COMP-001"
+    ],
     "specifying": [],
     "testing": [],
     "implementing": [],
@@ -56,5 +68,8 @@
       "FOUND-001"
     ],
     "blocked": []
+  },
+  "prefixCounters": {
+    "COMP": 1
   }
 }
