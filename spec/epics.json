@@ -1,0 +1,20 @@
+{
+  "epics": {
+    "jamendo-app": {
+      "id": "jamendo-app",
+      "title": "Jamendo Music Streaming App",
+      "createdAt": "2025-11-21T09:26:09.362Z",
+      "workUnits": [
+        "JAM-001",
+        "JAM-002",
+        "JAM-003",
+        "JAM-004",
+        "JAM-005",
+        "JAM-006",
+        "JAM-007",
+        "JAM-008",
+        "JAM-009"
+      ]
+    }
+  }
+}

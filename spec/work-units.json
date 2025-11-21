@@ -54,11 +54,148 @@
       "updatedAt": "2025-11-21T05:45:28.484Z",
       "description": "Refactor SearchBar component to use a single useEffect or custom hook for debouncing, eliminating the dependency array issue with onChangeText callback. Current implementation has two useEffect hooks that can cause unnecessary re-renders when parent doesn't memoize the callback.",
       "children": []
+    },
+    "JAM-001": {
+      "id": "JAM-001",
+      "title": "Setup project dependencies and package structure",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:15.933Z",
+      "updatedAt": "2025-11-21T09:26:15.933Z",
+      "description": "Install RTK Query, audio libraries (expo-audio, react-native-audio-pro), FlashList, environment variables support. Create rtk-services and components package directories",
+      "epic": "jamendo-app",
+      "children": []
+    },
+    "JAM-002": {
+      "id": "JAM-002",
+      "title": "Configure RTK Services package with Jamendo API",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:21.095Z",
+      "updatedAt": "2025-11-21T09:27:12.166Z",
+      "description": "Create @jamendo/rtk-services package with baseApi, jamendoApi endpoints (searchTracks, getTrackDetail), TypeScript types, and Redux store configuration",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-001"
+      ]
+    },
+    "JAM-003": {
+      "id": "JAM-003",
+      "title": "Configure Components package with audio players and UI",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:26.102Z",
+      "updatedAt": "2025-11-21T09:27:17.778Z",
+      "description": "Create @jamendo/components package with ExpoAudioPlayer, AudioProPlayer, TrackCard, TrackList (FlashList), and SearchBar components",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-001"
+      ]
+    },
+    "JAM-004": {
+      "id": "JAM-004",
+      "title": "Configure environment variables and Jamendo API client",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:32.154Z",
+      "updatedAt": "2025-11-21T09:27:18.318Z",
+      "description": "Setup .env file with EXPO_PUBLIC_JAMENDO_CLIENT_ID, update app.json for environment variables, create config.ts constants file",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-001"
+      ]
+    },
+    "JAM-005": {
+      "id": "JAM-005",
+      "title": "Integrate Redux Provider in app root layout",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:39.216Z",
+      "updatedAt": "2025-11-21T09:27:18.874Z",
+      "description": "Update apps/example/app/_layout.tsx to wrap app with Redux Provider and configure store",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-002"
+      ]
+    },
+    "JAM-006": {
+      "id": "JAM-006",
+      "title": "Build Home page with search and track results",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:45.533Z",
+      "updatedAt": "2025-11-21T09:27:29.895Z",
+      "description": "Implement search screen at apps/example/app/(tabs)/index.tsx with SearchBar, RTK Query integration (useSearchTracksQuery), TrackList with FlashList, and navigation to track detail",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-002",
+        "JAM-003",
+        "JAM-004",
+        "JAM-005"
+      ]
+    },
+    "JAM-007": {
+      "id": "JAM-007",
+      "title": "Build Track detail page with dual audio players",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:51.233Z",
+      "updatedAt": "2025-11-21T09:27:34.439Z",
+      "description": "Implement track detail screen at apps/example/app/track/[id].tsx with ScrollView layout, track information, and both ExpoAudioPlayer and AudioProPlayer for comparison",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-002",
+        "JAM-003"
+      ]
+    },
+    "JAM-008": {
+      "id": "JAM-008",
+      "title": "Update navigation and tab bar configuration",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:26:56.462Z",
+      "updatedAt": "2025-11-21T09:27:38.524Z",
+      "description": "Update apps/example/app/(tabs)/_layout.tsx to rename tabs, add music-related icons, and configure stack navigation for track detail page",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-006",
+        "JAM-007"
+      ]
+    },
+    "JAM-009": {
+      "id": "JAM-009",
+      "title": "Testing and validation of complete app",
+      "type": "story",
+      "status": "backlog",
+      "createdAt": "2025-11-21T09:27:01.827Z",
+      "updatedAt": "2025-11-21T09:27:42.613Z",
+      "description": "Verify API usage optimization (minimal vs full fields), test both audio player implementations, validate FlashList performance, test navigation flow, and verify Redux DevTools integration",
+      "epic": "jamendo-app",
+      "children": [],
+      "dependsOn": [
+        "JAM-008"
+      ]
     }
   },
   "states": {
     "backlog": [
-      "COMP-001"
+      "COMP-001",
+      "JAM-001",
+      "JAM-002",
+      "JAM-003",
+      "JAM-004",
+      "JAM-005",
+      "JAM-006",
+      "JAM-007",
+      "JAM-008",
+      "JAM-009"
     ],
     "specifying": [],
     "testing": [],
@@ -70,6 +207,7 @@
     "blocked": []
   },
   "prefixCounters": {
-    "COMP": 1
+    "COMP": 1,
+    "JAM": 9
   }
 }

@@ -9,6 +9,11 @@
       "prefix": "COMP",
       "description": "Component development and optimization tasks",
       "createdAt": "2025-11-21T05:45:22.439Z"
+    },
+    "JAM": {
+      "prefix": "JAM",
+      "description": "Jamendo Music App implementation tasks",
+      "createdAt": "2025-11-21T09:25:36.225Z"
     }
   }
 }
