@@ -13,6 +13,7 @@ Phase identification tags
 | Tag | Description |
 |-----|-------------|
 | `@high` | High priority features that should be implemented early |
+
 ### Component Tags (Required)
 
 Architectural component tags
@@ -38,6 +39,8 @@ Technical concern tags
 
 | Tag | Description |
 |-----|-------------|
+| `@configuration` | Configuration files and environment setup |
+| `@environment` | Environment variables and runtime configuration |
 | `@monorepo` | Monorepo-specific features and configurations |
 | `@rtk-query` | Redux Toolkit Query for API state management |
 | `@typescript` | TypeScript type definitions and interfaces |
@@ -53,6 +56,7 @@ Implementation priority tags
 | Tag | Description |
 |-----|-------------|
 | `@high` | High priority features requiring early implementation |
+
 ### Status Tags
 
 Development status tags
@@ -84,7 +88,7 @@ Automation integration tags
 
 ## Tag Statistics
 
-_Last updated: 2025-11-21T09:51:20.040Z_
+_Last updated: 2025-11-21T10:26:00.177Z_
 
 **Update Command**: `fspec tag-stats`
 

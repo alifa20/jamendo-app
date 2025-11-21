@@ -1,0 +1,74 @@
+{
+  "scenarios": [
+    {
+      "name": "Access environment variables through process.env",
+      "testMappings": [
+        {
+          "file": "apps/example/__tests__/config.test.ts",
+          "lines": "17-42",
+          "implMappings": []
+        }
+      ]
+    },
+    {
+      "name": "Import typed constants from config.ts",
+      "testMappings": [
+        {
+          "file": "apps/example/__tests__/config.test.ts",
+          "lines": "44-69",
+          "implMappings": []
+        }
+      ]
+    },
+    {
+      "name": "Throw error when required environment variable is missing",
+      "testMappings": [
+        {
+          "file": "apps/example/__tests__/config.test.ts",
+          "lines": "71-96",
+          "implMappings": []
+        }
+      ]
+    },
+    {
+      "name": "Verify .env file is gitignored",
+      "testMappings": [
+        {
+          "file": "apps/example/__tests__/config.test.ts",
+          "lines": "100-116",
+          "implMappings": []
+        }
+      ]
+    },
+    {
+      "name": "New developer onboarding workflow",
+      "testMappings": [
+        {
+          "file": "apps/example/__tests__/config.test.ts",
+          "lines": "119-142",
+          "implMappings": []
+        }
+      ]
+    },
+    {
+      "name": "Validate config.ts exports non-nullable types",
+      "testMappings": [
+        {
+          "file": "apps/example/__tests__/config.test.ts",
+          "lines": "145-170",
+          "implMappings": []
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalScenarios": 6,
+    "coveredScenarios": 6,
+    "coveragePercent": 100,
+    "testFiles": [
+      "apps/example/__tests__/config.test.ts"
+    ],
+    "implFiles": [],
+    "totalLinesCovered": 145
+  }
+}

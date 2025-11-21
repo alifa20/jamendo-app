@@ -51,6 +51,14 @@
       "required": false,
       "tags": [
         {
+          "name": "@configuration",
+          "description": "Configuration files and environment setup"
+        },
+        {
+          "name": "@environment",
+          "description": "Environment variables and runtime configuration"
+        },
+        {
           "name": "@monorepo",
           "description": "Monorepo-specific features and configurations"
         },
@@ -140,7 +148,7 @@
     "examples": []
   },
   "statistics": {
-    "lastUpdated": "2025-11-21T09:51:20.040Z",
+    "lastUpdated": "2025-11-21T10:26:00.177Z",
     "phaseStats": [],
     "componentStats": [],
     "featureGroupStats": [],
