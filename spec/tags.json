@@ -21,6 +21,10 @@
           "description": "API integration and networking components"
         },
         {
+          "name": "@app",
+          "description": "Application-level components and root layout"
+        },
+        {
           "name": "@infrastructure",
           "description": "Infrastructure and setup-related components"
         },
@@ -42,6 +46,10 @@
         {
           "name": "@dependency-management",
           "description": "Package and dependency management features"
+        },
+        {
+          "name": "@state-management",
+          "description": "State management and Redux integration features"
         }
       ]
     },
@@ -61,6 +69,10 @@
         {
           "name": "@monorepo",
           "description": "Monorepo-specific features and configurations"
+        },
+        {
+          "name": "@redux",
+          "description": "Redux and Redux Toolkit implementation"
         },
         {
           "name": "@rtk-query",
@@ -148,7 +160,7 @@
     "examples": []
   },
   "statistics": {
-    "lastUpdated": "2025-11-21T10:26:00.177Z",
+    "lastUpdated": "2025-11-21T10:30:12.666Z",
     "phaseStats": [],
     "componentStats": [],
     "featureGroupStats": [],

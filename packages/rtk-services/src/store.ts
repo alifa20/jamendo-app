@@ -14,12 +14,14 @@ import { jamendoApi } from './api/jamendoApi';
  * Includes:
  * - jamendoApi reducer for API state management
  * - RTK Query middleware for caching and refetching
+ * - Redux DevTools enabled in development mode
  */
 export const store = configureStore({
   reducer: {
     [jamendoApi.reducerPath]: jamendoApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(jamendoApi.middleware),
+  devTools: typeof __DEV__ !== 'undefined' ? __DEV__ : process.env.NODE_ENV !== 'production',
 });
 
 /**
