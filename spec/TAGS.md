@@ -10,6 +10,9 @@
 
 Phase identification tags
 
+| Tag | Description |
+|-----|-------------|
+| `@high` | High priority features that should be implemented early |
 ### Component Tags (Required)
 
 Architectural component tags
@@ -17,6 +20,7 @@ Architectural component tags
 | Tag | Description |
 |-----|-------------|
 | `@api` | API integration and networking components |
+| `@infrastructure` | Infrastructure and setup-related components |
 | `@services` | Service layer and business logic |
 
 ### Feature Group Tags (Required)
@@ -26,6 +30,7 @@ Functional area tags
 | Tag | Description |
 |-----|-------------|
 | `@api-integration` | API integration and external service connectivity |
+| `@dependency-management` | Package and dependency management features |
 
 ### Technical Tags
 
@@ -33,6 +38,7 @@ Technical concern tags
 
 | Tag | Description |
 |-----|-------------|
+| `@monorepo` | Monorepo-specific features and configurations |
 | `@rtk-query` | Redux Toolkit Query for API state management |
 | `@typescript` | TypeScript type definitions and interfaces |
 
@@ -47,7 +53,6 @@ Implementation priority tags
 | Tag | Description |
 |-----|-------------|
 | `@high` | High priority features requiring early implementation |
-
 ### Status Tags
 
 Development status tags
@@ -55,6 +60,7 @@ Development status tags
 | Tag | Description |
 |-----|-------------|
 | `@done` | Completed and verified features |
+| `@setup` | Setup and initialization work in progress |
 
 ### Testing Tags
 

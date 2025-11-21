@@ -4,7 +4,12 @@
       "name": "Phase Tags",
       "description": "Phase identification tags",
       "required": true,
-      "tags": []
+      "tags": [
+        {
+          "name": "@high",
+          "description": "High priority features that should be implemented early"
+        }
+      ]
     },
     {
       "name": "Component Tags",
@@ -14,6 +19,10 @@
         {
           "name": "@api",
           "description": "API integration and networking components"
+        },
+        {
+          "name": "@infrastructure",
+          "description": "Infrastructure and setup-related components"
         },
         {
           "name": "@services",
@@ -29,6 +38,10 @@
         {
           "name": "@api-integration",
           "description": "API integration and external service connectivity"
+        },
+        {
+          "name": "@dependency-management",
+          "description": "Package and dependency management features"
         }
       ]
     },
@@ -37,6 +50,10 @@
       "description": "Technical concern tags",
       "required": false,
       "tags": [
+        {
+          "name": "@monorepo",
+          "description": "Monorepo-specific features and configurations"
+        },
         {
           "name": "@rtk-query",
           "description": "Redux Toolkit Query for API state management"
@@ -72,6 +89,10 @@
         {
           "name": "@done",
           "description": "Completed and verified features"
+        },
+        {
+          "name": "@setup",
+          "description": "Setup and initialization work in progress"
         }
       ]
     },

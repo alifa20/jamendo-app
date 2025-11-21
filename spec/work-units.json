@@ -2,7 +2,7 @@
   "version": "0.7.1",
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2025-11-21T09:51:07.826Z"
+    "lastUpdated": "2025-11-21T09:54:49.407Z"
   },
   "workUnits": {
     "FOUND-001": {
@@ -59,12 +59,170 @@
       "id": "JAM-001",
       "title": "Setup project dependencies and package structure",
       "type": "story",
-      "status": "backlog",
+      "status": "implementing",
       "createdAt": "2025-11-21T09:26:15.933Z",
-      "updatedAt": "2025-11-21T09:26:15.933Z",
+      "updatedAt": "2025-11-21T09:59:40.333Z",
       "description": "Install RTK Query, audio libraries (expo-audio, react-native-audio-pro), FlashList, environment variables support. Create rtk-services and components package directories",
       "epic": "jamendo-app",
-      "children": []
+      "children": [],
+      "stateHistory": [
+        {
+          "state": "specifying",
+          "timestamp": "2025-11-21T09:33:33.209Z"
+        },
+        {
+          "state": "testing",
+          "timestamp": "2025-11-21T09:54:54.969Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-21T09:59:40.333Z"
+        }
+      ],
+      "userStory": {
+        "role": "developer",
+        "action": "set up project dependencies and package structure",
+        "benefit": "I can start building features with the required libraries"
+      },
+      "questions": [
+        {
+          "id": 0,
+          "text": "@human: Should we install @reduxjs/toolkit and configure RTK Query with a base API service, or just install the package?",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:34:25.039Z",
+          "selected": true,
+          "answered": true,
+          "answer": "RTK Query is already configured in @packages/rtk-services/, so we can skip this"
+        },
+        {
+          "id": 1,
+          "text": "@human: Should we install both expo-audio and react-native-audio-pro, or choose one? What's the preferred audio solution?",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:34:44.572Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Use expo-audio for now"
+        },
+        {
+          "id": 2,
+          "text": "@human: For the rtk-services package, should it be named @jamendo/rtk-services? What about the components package name?",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:34:51.686Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Yes, follow @jamendo/ naming convention (already done)"
+        },
+        {
+          "id": 3,
+          "text": "@human: What specific environment variables need to be configured besides EXPO_PUBLIC_JAMENDO_CLIENT_ID?",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:35:26.763Z",
+          "selected": true,
+          "answered": true,
+          "answer": "EXPO_PUBLIC_JAMENDO_CLIENT_ID (required), EXPO_PUBLIC_JAMENDO_API_URL (optional, defaults to https://api.jamendo.com/v3.0)"
+        },
+        {
+          "id": 4,
+          "text": "@human: Should FlashList replace existing FlatList usage in the codebase, or is it only for new features?",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:35:37.035Z",
+          "selected": true,
+          "answered": true,
+          "answer": "No FlatList exists currently. Use FlashList for all list implementations going forward. Do not remove or touch FlatList if found."
+        }
+      ],
+      "nextQuestionId": 5,
+      "rules": [
+        {
+          "id": 0,
+          "text": "expo-audio must be installed for audio playback functionality",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:39:04.742Z"
+        },
+        {
+          "id": 1,
+          "text": "@shopify/flash-list must be installed for performant list rendering",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:39:09.369Z"
+        },
+        {
+          "id": 2,
+          "text": "Environment variables must be configured in .env file with EXPO_PUBLIC_JAMENDO_CLIENT_ID (required)",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:39:14.321Z"
+        },
+        {
+          "id": 3,
+          "text": "All installed packages must appear in package.json dependencies",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:39:20.055Z"
+        },
+        {
+          "id": 4,
+          "text": "@jamendo/components package must be added as dependency in apps/example",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:41:30.829Z"
+        },
+        {
+          "id": 5,
+          "text": "@jamendo/rtk-services package must be added as dependency in apps/example",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:41:35.691Z"
+        }
+      ],
+      "nextRuleId": 6,
+      "examples": [
+        {
+          "id": 0,
+          "text": "Developer runs 'pnpm add expo-audio' in apps/example directory, expo-audio appears in package.json",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:40:38.228Z"
+        },
+        {
+          "id": 1,
+          "text": "Developer runs 'pnpm add @shopify/flash-list' in apps/example directory, @shopify/flash-list appears in package.json",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:40:42.855Z"
+        },
+        {
+          "id": 2,
+          "text": "Developer creates .env file in apps/example with EXPO_PUBLIC_JAMENDO_CLIENT_ID=test_client_id",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:40:48.109Z"
+        },
+        {
+          "id": 3,
+          "text": "Developer runs 'pnpm install' and all packages install successfully without errors",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:40:52.932Z"
+        },
+        {
+          "id": 4,
+          "text": "Developer adds @jamendo/components as dependency in apps/example/package.json",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:41:40.795Z"
+        },
+        {
+          "id": 5,
+          "text": "Developer adds @jamendo/rtk-services as dependency in apps/example/package.json",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:41:45.790Z"
+        }
+      ],
+      "nextExampleId": 6,
+      "estimate": 2,
+      "architectureNotes": [
+        {
+          "id": 0,
+          "text": "Implementation approach: Add workspace dependencies (@jamendo/components, @jamendo/rtk-services) to apps/example/package.json using workspace:* protocol. Install npm packages (expo-audio, @shopify/flash-list) directly. Create .env file with EXPO_PUBLIC_JAMENDO_CLIENT_ID. Alignment: Follows existing monorepo structure and workspace dependency pattern already used for @jamendo/feature-home.",
+          "deleted": false,
+          "createdAt": "2025-11-21T09:51:00.983Z"
+        }
+      ],
+      "nextNoteId": 1,
+      "attachments": [
+        "spec/attachments/JAM-001/ast-research-package-structure.json"
+      ]
     },
     "JAM-002": {
       "id": "JAM-002",
@@ -367,7 +525,6 @@
   "states": {
     "backlog": [
       "COMP-001",
-      "JAM-001",
       "JAM-003",
       "JAM-004",
       "JAM-005",
@@ -378,7 +535,9 @@
     ],
     "specifying": [],
     "testing": [],
-    "implementing": [],
+    "implementing": [
+      "JAM-001"
+    ],
     "validating": [],
     "done": [
       "JAM-002",

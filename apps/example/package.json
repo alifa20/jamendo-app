@@ -15,12 +15,16 @@
     "eas-build-post-install": "pnpm run -w build:example"
   },
   "dependencies": {
-    "@jamendo/feature-home": "workspace:*",
     "@expo/vector-icons": "^15.0.2",
+    "@jamendo/components": "workspace:*",
+    "@jamendo/feature-home": "workspace:*",
+    "@jamendo/rtk-services": "workspace:*",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
+    "@shopify/flash-list": "^1.8.3",
     "expo": "~54.0.6",
+    "expo-audio": "~1.0.14",
     "expo-haptics": "~15.0.7",
     "expo-image": "~3.0.8",
     "expo-router": "~6.0.3",
@@ -36,9 +40,9 @@
     "react-native-web": "~0.21.0"
   },
   "devDependencies": {
-    "@jamendo/eslint-config": "workspace:*",
     "@expo/metro": "^0.1.1",
     "@expo/metro-runtime": "~6.1.2",
+    "@jamendo/eslint-config": "workspace:*",
     "@testing-library/react-native": "^13.2.0",
     "@types/react": "~19.1.0",
     "eslint": "^8.57.0",
