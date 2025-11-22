@@ -18,7 +18,7 @@ export default function HomeScreen() {
     skip: searchQuery.length === 0,
   });
 
-  const tracks2 = data?.results || [];
+  const tracks = data?.results || [];
 
   const handleTrackPress = (trackId: string) => {
     router.push(`/track/${trackId}` as any); // TODO: Add track detail route file for proper typing
@@ -77,16 +77,16 @@ export default function HomeScreen() {
             </View>
           )}
 
-          {!isLoading && !isError && searchQuery.length > 0 && tracks2.length === 0 && (
+          {!isLoading && !isError && searchQuery.length > 0 && tracks.length === 0 && (
             <View style={styles.centerContent}>
               <ThemedText>No tracks found for "{searchQuery}"</ThemedText>
             </View>
           )}
 
-          {!isLoading && !isError && tracks2.length > 0 && (
+          {!isLoading && !isError && tracks.length > 0 && (
             <FlashList
               testID="track-list"
-              data={tracks2}
+              data={tracks}
               renderItem={renderTrackItem}
               estimatedItemSize={80}
               keyExtractor={(item: any) => item.id}
