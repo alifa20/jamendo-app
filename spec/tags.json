@@ -8,6 +8,10 @@
         {
           "name": "@high",
           "description": "High priority features that should be implemented early"
+        },
+        {
+          "name": "@medium",
+          "description": "Medium priority features for implementation after high priority work"
         }
       ]
     },
@@ -193,7 +197,7 @@
     "examples": []
   },
   "statistics": {
-    "lastUpdated": "2025-11-22T06:15:38.936Z",
+    "lastUpdated": "2025-11-22T09:26:06.324Z",
     "phaseStats": [],
     "componentStats": [],
     "featureGroupStats": [],

@@ -13,6 +13,7 @@ Phase identification tags
 | Tag | Description |
 |-----|-------------|
 | `@high` | High priority features that should be implemented early |
+| `@medium` | Medium priority features for implementation after high priority work |
 
 ### Component Tags (Required)
 
@@ -102,7 +103,7 @@ Automation integration tags
 
 ## Tag Statistics
 
-_Last updated: 2025-11-22T06:15:38.936Z_
+_Last updated: 2025-11-22T09:26:06.324Z_
 
 **Update Command**: `fspec tag-stats`
 

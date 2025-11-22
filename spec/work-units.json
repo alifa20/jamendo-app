@@ -2,7 +2,7 @@
   "version": "0.7.1",
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2025-11-22T08:23:04.316Z"
+    "lastUpdated": "2025-11-22T09:36:03.288Z"
   },
   "workUnits": {
     "FOUND-001": {
@@ -1583,6 +1583,160 @@
       "architectureNotes": [],
       "nextNoteId": 0,
       "updated": "2025-11-22T08:23:04.320Z"
+    },
+    "JAM-012": {
+      "id": "JAM-012",
+      "title": "Remove unused feature-home package and explore screen",
+      "type": "story",
+      "status": "done",
+      "createdAt": "2025-11-22T09:17:37.016Z",
+      "updatedAt": "2025-11-22T09:36:03.293Z",
+      "description": "Clean up unused code: @jamendo/feature-home package is not imported anywhere in the app, and the explore screen (app/(tabs)/explore.tsx) contains only boilerplate content that is not part of the Jamendo music app functionality. Remove these to improve maintainability and reduce bundle size.",
+      "epic": "jamendo-app",
+      "children": [],
+      "stateHistory": [
+        {
+          "state": "specifying",
+          "timestamp": "2025-11-22T09:18:36.134Z"
+        },
+        {
+          "state": "testing",
+          "timestamp": "2025-11-22T09:28:23.181Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-22T09:30:54.552Z"
+        },
+        {
+          "state": "validating",
+          "timestamp": "2025-11-22T09:32:56.473Z"
+        },
+        {
+          "state": "done",
+          "timestamp": "2025-11-22T09:36:03.293Z"
+        }
+      ],
+      "userStory": {
+        "role": "developer maintaining the codebase",
+        "action": "remove unused feature-home package and explore screen boilerplate",
+        "benefit": "new developers and users aren't confused by unused screens and packages"
+      },
+      "rules": [
+        {
+          "id": 0,
+          "text": "The feature-home package must be removed from package.json dependencies",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:22:39.279Z"
+        },
+        {
+          "id": 1,
+          "text": "The explore screen file must be deleted from app/(tabs)/explore.tsx",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:22:43.339Z"
+        },
+        {
+          "id": 2,
+          "text": "The explore tab must be removed from the tab layout configuration",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:22:47.502Z"
+        },
+        {
+          "id": 3,
+          "text": "The feature-home package must have zero imports before removal",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:22:51.693Z"
+        },
+        {
+          "id": 4,
+          "text": "The packages/feature-home directory must be completely deleted",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:24:46.288Z"
+        }
+      ],
+      "nextRuleId": 5,
+      "examples": [
+        {
+          "id": 0,
+          "text": "Developer removes '@jamendo/feature-home: workspace:*' from apps/example/package.json dependencies",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:22:55.826Z"
+        },
+        {
+          "id": 1,
+          "text": "Developer deletes app/(tabs)/explore.tsx file containing boilerplate Expo documentation",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:22:59.609Z"
+        },
+        {
+          "id": 2,
+          "text": "Developer removes Tabs.Screen with name='explore' from app/(tabs)/_layout.tsx",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:23:04.723Z"
+        },
+        {
+          "id": 3,
+          "text": "Developer runs 'pnpm install' after removing package to update lockfile",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:23:12.117Z"
+        },
+        {
+          "id": 4,
+          "text": "Developer runs 'pnpm build' successfully after all removals with no errors",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:23:16.039Z"
+        },
+        {
+          "id": 5,
+          "text": "Developer deletes packages/feature-home directory completely including all source files",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:24:50.230Z"
+        }
+      ],
+      "nextExampleId": 6,
+      "questions": [
+        {
+          "id": 0,
+          "text": "@human: Should we also delete the packages/feature-home directory itself, or just remove it from dependencies?",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:23:23.688Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Yes, completely remove the packages/feature-home directory and do proper cleanup"
+        },
+        {
+          "id": 1,
+          "text": "@human: Should we verify the app runs successfully (pnpm dev) after removal, or is building enough?",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:23:28.813Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Building is enough - user will verify the app runs manually"
+        },
+        {
+          "id": 2,
+          "text": "@human: Are there any other boilerplate screens or unused packages we should remove in this task?",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:23:32.943Z",
+          "selected": true,
+          "answered": true,
+          "answer": "No, only the explore screen needs to be removed in this task"
+        }
+      ],
+      "nextQuestionId": 3,
+      "estimate": 2,
+      "architectureNotes": [
+        {
+          "id": 0,
+          "text": "Cleanup approach: (1) Remove @jamendo/feature-home from apps/example/package.json dependencies, (2) Delete app/(tabs)/explore.tsx file, (3) Remove Tabs.Screen component with name='explore' from app/(tabs)/_layout.tsx (lines 27-33), (4) Delete packages/feature-home directory completely, (5) Run pnpm install to update lockfile, (6) Run pnpm build to verify no breaking changes. No code imports of @jamendo/feature-home exist (verified via grep), so removal is safe.",
+          "deleted": false,
+          "createdAt": "2025-11-22T09:27:01.735Z"
+        }
+      ],
+      "nextNoteId": 1,
+      "attachments": [
+        "spec/attachments/JAM-012/ast-research-cleanup-analysis.md"
+      ],
+      "updated": "2025-11-22T09:36:03.293Z"
     }
   },
   "states": {
@@ -1596,6 +1750,7 @@
     "implementing": [],
     "validating": [],
     "done": [
+      "JAM-012",
       "JAM-011",
       "JAM-010",
       "JAM-007",
@@ -1611,6 +1766,6 @@
   },
   "prefixCounters": {
     "COMP": 1,
-    "JAM": 11
+    "JAM": 12
   }
 }
