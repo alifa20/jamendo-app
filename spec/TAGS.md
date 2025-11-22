@@ -33,6 +33,7 @@ Functional area tags
 | Tag | Description |
 |-----|-------------|
 | `@api-integration` | API integration and external service connectivity |
+| `@ci-optimization` | CI/CD pipeline optimization and workflow improvements |
 | `@dependency-management` | Package and dependency management features |
 | `@feature-home` | Home screen features including search and track listing |
 | `@state-management` | State management and Redux integration features |
@@ -98,7 +99,7 @@ Automation integration tags
 
 ## Tag Statistics
 
-_Last updated: 2025-11-21T11:38:08.504Z_
+_Last updated: 2025-11-22T06:15:38.936Z_
 
 **Update Command**: `fspec tag-stats`
 
