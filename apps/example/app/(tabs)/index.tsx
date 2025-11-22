@@ -18,7 +18,7 @@ export default function HomeScreen() {
     skip: searchQuery.length === 0,
   });
 
-  const tracks = data?.results || [];
+  const tracks = searchQuery.length > 0 ? (data?.results || []) : [];
 
   const handleTrackPress = (trackId: string) => {
     router.push(`/track/${trackId}` as any); // TODO: Add track detail route file for proper typing
@@ -93,7 +93,7 @@ export default function HomeScreen() {
             />
           )}
 
-          {searchQuery.length === 0 && (
+          {searchQuery.length === 0 && !data && (
             <View style={styles.centerContent}>
               <ThemedText style={styles.emptyText}>
                 Search for tracks to discover music on Jamendo
