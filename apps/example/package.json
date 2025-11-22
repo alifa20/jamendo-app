@@ -20,7 +20,6 @@
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
     "@jamendo/components": "workspace:*",
-    "@jamendo/feature-home": "workspace:*",
     "@jamendo/rtk-services": "workspace:*",
     "@jamendo/ui": "workspace:*",
     "@react-navigation/bottom-tabs": "^7.4.0",
