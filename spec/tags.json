@@ -31,6 +31,10 @@
         {
           "name": "@services",
           "description": "Service layer and business logic"
+        },
+        {
+          "name": "@ui",
+          "description": "User interface and visual components"
         }
       ]
     },
@@ -46,6 +50,10 @@
         {
           "name": "@dependency-management",
           "description": "Package and dependency management features"
+        },
+        {
+          "name": "@feature-home",
+          "description": "Home screen features including search and track listing"
         },
         {
           "name": "@state-management",
@@ -100,7 +108,16 @@
       "name": "Platform Tags",
       "description": "Platform-specific tags",
       "required": false,
-      "tags": []
+      "tags": [
+        {
+          "name": "@expo",
+          "description": "Expo-specific features and functionality"
+        },
+        {
+          "name": "@react-native",
+          "description": "React Native mobile platform features"
+        }
+      ]
     },
     {
       "name": "Priority Tags",

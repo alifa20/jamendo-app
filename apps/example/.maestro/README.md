@@ -1,118 +1,88 @@
-# Maestro E2E Testing for Jamendo App
+# Maestro E2E Tests
 
-This directory contains Maestro test flows for end-to-end testing of the Jamendo React Native app.
+This directory contains Maestro end-to-end tests for the Jamendo Music App.
 
-## What is Maestro?
+## Setup
 
-Maestro is a mobile UI testing framework that allows you to write declarative tests in YAML format. It's particularly well-suited for React Native apps and provides:
+### 1. Install Maestro CLI
 
-- Cross-platform testing (iOS & Android)
-- Simple YAML-based test syntax
-- Fast execution
-- No need for app instrumentation
-- Built-in support for deep linking, network conditions, and more
+**macOS/Linux:**
+```bash
+curl -Ls "https://get.maestro.mobile.dev" | bash
+```
 
-## Prerequisites
+**Windows:**
+```powershell
+iwr "https://get.maestro.mobile.dev/windows" | iex
+```
 
-Install Maestro CLI:
+### 2. Verify Installation
 
 ```bash
-# macOS
-brew tap mobile-dev-inc/tap
-brew install maestro
-
-# Other platforms
-curl -Ls "https://get.maestro.mobile.dev" | bash
+maestro --version
 ```
 
 ## Running Tests
 
-### Run all tests
+### Run all E2E tests
+
+From the project root:
 ```bash
-pnpm test
+pnpm test:e2e
 ```
 
-### Run a specific flow
+Or directly with Maestro:
 ```bash
-pnpm test:single .maestro/flows/track-detail-load.yaml
+maestro test apps/example/.maestro
 ```
 
-### Run tests on specific device
+### Run specific test flow
+
 ```bash
-# iOS Simulator
-maestro test --device "iPhone 15 Pro" .maestro/flows
-
-# Android Emulator
-maestro test --device emulator-5554 .maestro/flows
+maestro test apps/example/.maestro/home-screen.yaml
 ```
 
-## Test Flows
+### Run with iOS Simulator
 
-### JAM-007: Track Detail Page
-- `track-detail-load.yaml` - Successfully load track detail page with complete information
-- `track-detail-scroll.yaml` - Scroll track details with fixed audio player
-- `track-detail-invalid-id.yaml` - Handle invalid track ID
-- `track-detail-network-error.yaml` - Handle network error when loading track
-- `track-detail-play-audio.yaml` - Play audio track on user interaction
-
-## Writing New Flows
-
-Each flow file corresponds to a Gherkin scenario and includes `@step` comments mapping to the feature file.
-
-Example structure:
-```yaml
-# Feature: spec/features/my-feature.feature
-# Scenario: My test scenario
-
-appId: com.anonymous.jamendo
----
-# @step Given I am on the home page
-- launchApp
-
-# @step When I tap the search button
-- tapOn: "Search"
-
-# @step Then I should see search results
-- assertVisible: "Results"
-```
-
-## Best Practices
-
-1. **Use testID for assertions**: Add `testID` props to React Native components for reliable element selection
-2. **Wait for animations**: Use `waitForAnimationToEnd` after navigation or data loading
-3. **Keep flows focused**: Each flow should test one scenario
-4. **Comment with Gherkin steps**: Map each Maestro command to a Gherkin step using `# @step` comments
-5. **Handle async operations**: Use appropriate timeouts for network requests and animations
-
-## Debugging
-
-### View Maestro Studio (interactive testing)
 ```bash
-maestro studio
+# Start the iOS simulator first
+pnpm ios
+
+# In another terminal, run Maestro tests
+pnpm test:e2e
 ```
 
-### Record a flow
+### Run with Android Emulator
+
 ```bash
-maestro record .maestro/flows/my-new-flow.yaml
+# Start the Android emulator first
+pnpm android
+
+# In another terminal, run Maestro tests
+pnpm test:e2e
 ```
 
-### View test results
-Test results are displayed in the terminal. For CI/CD, Maestro can export JUnit XML reports.
+## Test Files
+
+- `home-screen.yaml` - Tests the home screen search and track listing functionality
+
+## Writing Maestro Tests
+
+Maestro tests use YAML format. Common commands:
+
+- `launchApp` - Launch the app
+- `assertVisible` - Assert an element is visible
+- `tapOn` - Tap on an element
+- `inputText` - Type text into an input field
+- `scroll` - Scroll the screen
+- `swipe` - Swipe in a direction
+
+For more information, see:
+- [Maestro Documentation](https://maestro.mobile.dev/)
+- [Maestro with Expo Guide](https://maestro.mobile.dev/blog/pokedex-ui-testing-series-getting-started-with-maestro-in-expo-react-native-part-1)
+- [EAS Workflows with E2E Tests](https://docs.expo.dev/eas/workflows/examples/e2e-tests/)
 
 ## CI/CD Integration
 
-Maestro can run in CI/CD pipelines. Example GitHub Actions:
-
-```yaml
-- name: Run Maestro tests
-  uses: mobile-dev-inc/action-maestro-cloud@v1
-  with:
-    api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
-    app-file: app-release.apk
-```
-
-## Resources
-
-- [Maestro Documentation](https://maestro.mobile.dev/)
-- [Maestro CLI Reference](https://maestro.mobile.dev/reference/commands)
-- [Maestro Examples](https://github.com/mobile-dev-inc/maestro/tree/main/maestro-cli/test-suites)
+For EAS Build integration with Maestro, see:
+https://docs.expo.dev/eas/workflows/examples/e2e-tests/

@@ -36,8 +36,6 @@ export const jamendoApi = baseApi.injectEndpoints({
           format: 'json',
           namesearch: searchTerm,
           limit: 20,
-          // Minimal fields for list view
-          include: 'id name artist_name image',
         },
       }),
     }),

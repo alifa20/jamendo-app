@@ -1,0 +1,32 @@
+appId: com.jamendo.app
+---
+# Feature: spec/features/build-home-page-with-search-and-track-results.feature
+# Maestro E2E Tests for Home Screen
+
+# Scenario: Display search bar on home screen
+- launchApp
+- assertVisible: "Search tracks..."
+
+# Scenario: Search for tracks and display results
+- tapOn: "Search tracks..."
+- inputText: "jazz"
+- assertVisible:
+    text: ".*jazz.*"
+    timeout: 5000
+
+# Verify track details are displayed
+- assertVisible:
+    id: "track-title"
+- assertVisible:
+    id: "track-artist"
+- assertVisible:
+    id: "album-art"
+
+# Scenario: Scroll through search results smoothly
+- scroll
+
+# Scenario: Navigate to track detail from search results
+- tapOn:
+    id: "track-item"
+    index: 0
+- assertVisible: "Track Detail"

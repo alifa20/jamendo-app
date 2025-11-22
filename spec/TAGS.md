@@ -24,6 +24,7 @@ Architectural component tags
 | `@app` | Application-level components and root layout |
 | `@infrastructure` | Infrastructure and setup-related components |
 | `@services` | Service layer and business logic |
+| `@ui` | User interface and visual components |
 
 ### Feature Group Tags (Required)
 
@@ -33,6 +34,7 @@ Functional area tags
 |-----|-------------|
 | `@api-integration` | API integration and external service connectivity |
 | `@dependency-management` | Package and dependency management features |
+| `@feature-home` | Home screen features including search and track listing |
 | `@state-management` | State management and Redux integration features |
 | `@ui-features` | User interface pages, screens, and interactive components |
 
@@ -54,6 +56,11 @@ Technical concern tags
 ### Platform Tags
 
 Platform-specific tags
+
+| Tag | Description |
+|-----|-------------|
+| `@expo` | Expo-specific features and functionality |
+| `@react-native` | React Native mobile platform features |
 
 ### Priority Tags
 
