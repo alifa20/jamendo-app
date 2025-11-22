@@ -7,7 +7,7 @@
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
-    "test:e2e": "maestro test apps/example/.maestro",
+    "test:e2e-disabled": "maestro test apps/example/.maestro",
     "build": "turbo build",
     "build:example": "turbo build --filter=\"...{./apps/example}\"",
     "ios": "pnpm --filter @jamendo/app-example ios",

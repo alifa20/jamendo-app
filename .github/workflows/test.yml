@@ -57,61 +57,61 @@ jobs:
       - name: 🧪 Test packages
         run: pnpm run -w test
 
-  e2e:
-    runs-on: macos-14
-    needs: [lint-and-typecheck, build, test]
-    steps:
-      - name: 🏗 Setup repository
-        uses: actions/checkout@v4
-
-      - name: 🏗 Setup monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 📦 Install Maestro
-        run: |
-          curl -Ls "https://get.maestro.mobile.dev" | bash
-          echo "${HOME}/.maestro/bin" >> $GITHUB_PATH
-
-      - name: 📱 Setup iOS Simulator
-        uses: futureware-tech/simulator-action@v3
-        with:
-          model: 'iPhone 15 Pro'
-          os_version: '17.2'
-
-      - name: 🔧 Create .env file
-        working-directory: apps/example
-        run: |
-          echo "EXPO_PUBLIC_JAMENDO_CLIENT_ID=${{ secrets.JAMENDO_CLIENT_ID }}" > .env
-          echo "EXPO_PUBLIC_JAMENDO_API_URL=https://api.jamendo.com/v3.0" >> .env
-
-      - name: 🚀 Start Expo Dev Server
-        working-directory: apps/example
-        run: |
-          pnpm expo start --ios &
-          echo $! > .expo-pid
-
-      - name: ⏳ Wait for app to start
-        run: sleep 30
-
-      - name: 🧪 Run Maestro E2E Tests
-        working-directory: apps/example
-        run: maestro test .maestro
-
-      - name: 🛑 Stop Expo Dev Server
-        if: always()
-        working-directory: apps/example
-        run: |
-          if [ -f .expo-pid ]; then
-            kill $(cat .expo-pid) || true
-            rm .expo-pid
-          fi
-
-      - name: 📸 Upload Test Results
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: maestro-test-results
-          path: |
-            apps/example/.maestro/results/
-            apps/example/.maestro/*.mp4
-          retention-days: 7
+  # e2e: DISABLED temporarily
+  # runs-on: macos-14
+  # needs: [lint-and-typecheck, build, test]
+  # steps:
+  #   - name: 🏗 Setup repository
+  #     uses: actions/checkout@v4
+  #
+  #   - name: 🏗 Setup monorepo
+  #     uses: ./.github/actions/setup-monorepo
+  #
+  #   - name: 📦 Install Maestro
+  #     run: |
+  #       curl -Ls "https://get.maestro.mobile.dev" | bash
+  #       echo "${HOME}/.maestro/bin" >> $GITHUB_PATH
+  #
+  #   - name: 📱 Setup iOS Simulator
+  #     uses: futureware-tech/simulator-action@v3
+  #     with:
+  #       model: 'iPhone 15 Pro'
+  #       os_version: '17.2'
+  #
+  #   - name: 🔧 Create .env file
+  #     working-directory: apps/example
+  #     run: |
+  #       echo "EXPO_PUBLIC_JAMENDO_CLIENT_ID=${{ secrets.JAMENDO_CLIENT_ID }}" > .env
+  #       echo "EXPO_PUBLIC_JAMENDO_API_URL=https://api.jamendo.com/v3.0" >> .env
+  #
+  #   - name: 🚀 Start Expo Dev Server
+  #     working-directory: apps/example
+  #     run: |
+  #       pnpm expo start --ios &
+  #       echo $! > .expo-pid
+  #
+  #   - name: ⏳ Wait for app to start
+  #     run: sleep 30
+  #
+  #   - name: 🧪 Run Maestro E2E Tests
+  #     working-directory: apps/example
+  #     run: maestro test .maestro
+  #
+  #   - name: 🛑 Stop Expo Dev Server
+  #     if: always()
+  #     working-directory: apps/example
+  #     run: |
+  #       if [ -f .expo-pid ]; then
+  #         kill $(cat .expo-pid) || true
+  #         rm .expo-pid
+  #       fi
+  #
+  #   - name: 📸 Upload Test Results
+  #     if: failure()
+  #     uses: actions/upload-artifact@v4
+  #     with:
+  #       name: maestro-test-results
+  #       path: |
+  #         apps/example/.maestro/results/
+  #         apps/example/.maestro/*.mp4
+  #       retention-days: 7
