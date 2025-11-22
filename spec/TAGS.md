@@ -34,6 +34,7 @@ Functional area tags
 | `@api-integration` | API integration and external service connectivity |
 | `@dependency-management` | Package and dependency management features |
 | `@state-management` | State management and Redux integration features |
+| `@ui-features` | User interface pages, screens, and interactive components |
 
 ### Technical Tags
 
@@ -41,8 +42,10 @@ Technical concern tags
 
 | Tag | Description |
 |-----|-------------|
+| `@audio` | Audio playback and player components |
 | `@configuration` | Configuration files and environment setup |
 | `@environment` | Environment variables and runtime configuration |
+| `@expo` | Expo framework features and integrations |
 | `@monorepo` | Monorepo-specific features and configurations |
 | `@redux` | Redux and Redux Toolkit implementation |
 | `@rtk-query` | Redux Toolkit Query for API state management |
@@ -91,7 +94,7 @@ Automation integration tags
 
 ## Tag Statistics
 
-_Last updated: 2025-11-21T10:30:12.666Z_
+_Last updated: 2025-11-21T12:33:00.831Z_
 
 **Update Command**: `fspec tag-stats`
 

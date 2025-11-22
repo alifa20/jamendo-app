@@ -1,3 +1,6 @@
+@audio
+@ui-features
+@app
 @JAM-007
 Feature: Build Track detail page with dual audio players
   """

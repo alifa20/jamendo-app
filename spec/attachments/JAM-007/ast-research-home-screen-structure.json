@@ -1,0 +1,25 @@
+{
+  "matches": [
+    {
+      "type": "method_signature",
+      "name": "require",
+      "line": 16,
+      "column": 18,
+      "text": "require('@/assets/images/partial-react-logo.png')"
+    },
+    {
+      "type": "method_signature",
+      "name": "alert",
+      "line": 51,
+      "column": 71,
+      "text": "alert('Action pressed')"
+    },
+    {
+      "type": "method_signature",
+      "name": "alert",
+      "line": 62,
+      "column": 31,
+      "text": "alert('Delete pressed')"
+    }
+  ]
+}

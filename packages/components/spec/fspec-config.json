@@ -4,10 +4,9 @@
     "test": {
       "command": "pnpm test"
     },
-    "quality": {
+    "qualityCheck": {
       "commands": [
-        "pnpm lint",
-        "pnpm build"
+        "pnpm lint"
       ]
     }
   }

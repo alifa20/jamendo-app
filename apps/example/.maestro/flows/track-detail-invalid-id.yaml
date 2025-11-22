@@ -1,0 +1,22 @@
+# Feature: spec/features/build-track-detail-page-with-dual-audio-players.feature
+# Scenario: Handle invalid track ID
+
+appId: com.anonymous.jamendo
+---
+# @step Given I am on the app
+- launchApp
+
+# @step When I navigate to "/track/invalid-id"
+# Note: This requires deep linking or navigation implementation
+- tapOn: "Navigate to Invalid Track"
+
+# @step Then I should see the error message "Failed to load track details. Please try again."
+- assertVisible: "Failed to load track details. Please try again."
+
+# @step And I should not see the audio player
+- assertNotVisible:
+    id: "expo-audio-player"
+
+# @step And I should not see track information
+- assertNotVisible:
+    id: "track-info"

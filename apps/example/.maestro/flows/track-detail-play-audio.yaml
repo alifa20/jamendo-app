@@ -1,0 +1,30 @@
+# Feature: spec/features/build-track-detail-page-with-dual-audio-players.feature
+# Scenario: Play audio track on user interaction
+
+appId: com.anonymous.jamendo
+---
+# @step Given I am on the track detail page for track ID "12345"
+- launchApp
+- tapOn: "Track 12345"
+- waitForAnimationToEnd
+
+# @step And the track details are fully loaded
+- assertVisible: "Summer Vibes"
+
+# @step And the audio player shows a play button
+- assertVisible:
+    id: "play-button"
+
+# @step When I tap the play button on the audio player
+- tapOn:
+    id: "play-button"
+
+# @step Then the audio should start playing
+# Note: Audio playback is handled by ExpoAudioPlayer component
+
+# @step And the play button should change to a pause button
+- assertVisible:
+    id: "pause-button"
+
+- assertNotVisible:
+    id: "play-button"

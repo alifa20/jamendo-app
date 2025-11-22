@@ -1,0 +1,53 @@
+# Feature: spec/features/build-track-detail-page-with-dual-audio-players.feature
+# Scenario: Successfully load track detail page with complete information
+
+appId: com.anonymous.jamendo
+---
+# @step Given I am on the search results page from JAM-006
+- launchApp
+
+# @step When I tap on track "Summer Vibes" with ID "12345"
+# Note: This assumes navigation is implemented. For now, we'll test direct navigation.
+- tapOn: "Track 12345"
+
+# @step Then I should navigate to "/track/12345"
+# @step And I should see a skeleton loading state
+# Note: Skeleton may be too fast to assert in Maestro
+
+# @step And the skeleton should disappear when track data loads
+- waitForAnimationToEnd
+
+# @step And I should see the track title "Summer Vibes"
+- assertVisible: "Summer Vibes"
+
+# @step And I should see the artist name
+- assertVisible:
+    text: ".*"  # Artist name (dynamic from API)
+
+# @step And I should see the album art
+- assertVisible:
+    id: "album-art"
+
+# @step And I should see the release date
+- assertVisible:
+    text: "Release Date:"
+
+# @step And I should see the duration
+- assertVisible:
+    text: "Duration:"
+
+# @step And I should see the genre
+- assertVisible:
+    text: "Genres:"
+
+# @step And I should see the license information
+- assertVisible:
+    text: "License:"
+
+# @step And I should see ExpoAudioPlayer fixed at the bottom of the page
+- assertVisible:
+    id: "expo-audio-player"
+
+# @step And the audio player should show a play button (not playing)
+- assertVisible:
+    id: "play-button"

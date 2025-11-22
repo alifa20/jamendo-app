@@ -1,0 +1,10 @@
+{
+  "matches": [
+    {
+      "type": "arrow_function",
+      "line": 6,
+      "column": 27,
+      "text": "(props: HomeMessageProps) => (\n  <Paragraph {...props}>\n    Hello from an <Strong>Expo monorepo</Strong>!\n  </Paragraph>\n)"
+    }
+  ]
+}

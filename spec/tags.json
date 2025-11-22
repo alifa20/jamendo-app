@@ -50,6 +50,10 @@
         {
           "name": "@state-management",
           "description": "State management and Redux integration features"
+        },
+        {
+          "name": "@ui-features",
+          "description": "User interface pages, screens, and interactive components"
         }
       ]
     },
@@ -59,12 +63,20 @@
       "required": false,
       "tags": [
         {
+          "name": "@audio",
+          "description": "Audio playback and player components"
+        },
+        {
           "name": "@configuration",
           "description": "Configuration files and environment setup"
         },
         {
           "name": "@environment",
           "description": "Environment variables and runtime configuration"
+        },
+        {
+          "name": "@expo",
+          "description": "Expo framework features and integrations"
         },
         {
           "name": "@monorepo",
@@ -160,7 +172,7 @@
     "examples": []
   },
   "statistics": {
-    "lastUpdated": "2025-11-21T10:30:12.666Z",
+    "lastUpdated": "2025-11-21T12:33:00.831Z",
     "phaseStats": [],
     "componentStats": [],
     "featureGroupStats": [],

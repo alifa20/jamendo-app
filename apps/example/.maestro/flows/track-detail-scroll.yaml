@@ -1,0 +1,26 @@
+# Feature: spec/features/build-track-detail-page-with-dual-audio-players.feature
+# Scenario: Scroll track details with fixed audio player
+
+appId: com.anonymous.jamendo
+---
+# @step Given I am on the track detail page for track ID "12345"
+- launchApp
+- tapOn: "Track 12345"
+- waitForAnimationToEnd
+
+# @step And the track details are fully loaded
+- assertVisible: "Summer Vibes"
+
+# @step When I scroll down through the track details
+- scroll:
+    direction: DOWN
+    speed: 40
+
+# @step Then the audio player should remain fixed at the bottom of the page
+- assertVisible:
+    id: "expo-audio-player"
+
+# @step And the track details should scroll underneath the player
+# Note: Visual verification that content scrolled
+- assertVisible:
+    text: "License:"
