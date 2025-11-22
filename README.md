@@ -4,10 +4,12 @@ A React Native app for browsing and playing royalty-free music from Jamendo's mu
 
 ## Overview
 
-This app demonstrates a Redux-based music browsing and playback experience with two main screens:
+This app demonstrates a Redux-based music browsing and playback experience:
 
-1. **Home Page**: Search for music tracks with a text input and view results in a list
-2. **Detail Page**: View detailed track information and play the selected track using an audio player
+1. **Home Screen** (`/`): Search for music tracks with a text input and view results in a list using FlashList
+2. **Track Detail Screen** (`/track/[id]`): View detailed track information with an animated header, metadata (genres, instruments, tags, license, lyrics), and play the track using a fixed bottom audio player
+
+**Navigation:** Built with Expo Router (file-based routing) - tap any track from the home screen to navigate to its detail page.
 
 **Note**: This project was kick-started from an existing Expo monorepo template to accelerate development setup.
 
@@ -16,6 +18,13 @@ This app demonstrates a Redux-based music browsing and playback experience with 
 https://github.com/user-attachments/assets/e2f60dc0-6f83-40d2-bb59-6988506fcce3
 
 </div>
+
+### Key Features Demonstrated
+- 🔍 Real-time music search with debounced input
+- 📜 Smooth scrolling track list (FlashList)
+- 🎨 Animated track detail headers with blur effects
+- ▶️ Integrated audio player with album art
+- 📊 Comprehensive track metadata (genres, instruments, license, lyrics)
 
 ## Tech Stack
 
@@ -26,9 +35,16 @@ https://github.com/user-attachments/assets/e2f60dc0-6f83-40d2-bb59-6988506fcce3
 - **Expo Audio** - Media playback
 - **FlashList** - High-performance list rendering
 - **Expo Image** - Optimized image loading with caching
-- **React Native Reanimated** - Smooth 60fps animations
+- **React Native Reanimated** - Smooth 60fps animations (animated header with scroll-driven opacity fade and blur effects)
 - **pnpm** - Fast, efficient package manager
 - **Turborepo** - Monorepo build system
+
+### Navigation
+
+- **Expo Router** - File-based routing with app directory structure
+- **Single Tab** - Home screen as the main entry point
+- **Dynamic Routes** - Track details accessible via `/track/[id]` route
+- **Stack Navigation** - Seamless navigation between home and track details
 
 ### Development Tools
 
@@ -81,31 +97,33 @@ pnpm dev
 
 - [`apps/example`](./apps/example) - Main Jamendo music app
 - [`packages/`](./packages) - Shared packages and components
-  - `components` - Audio players and UI components
+  - `components` - Audio players (ExpoAudioPlayer, AudioProPlayer) and search components
   - `eslint-config` - ESLint configuration
-  - `feature-home` - Home screen features
-  - `rtk-services` - RTK Query API services
-  - `ui` - Shared UI components
+  - `rtk-services` - RTK Query API services for Jamendo API integration
+  - `ui` - Shared UI components (AnimatedTrackHeader, Button, TextInput, etc.)
 
 ## API Integration
 
 This app uses the Jamendo API v3.0 tracks endpoint with **RTK Query** for data fetching and caching:
 - **API Layer**: Separate `@jamendo/rtk-services` package handles all API calls
-- **Home page**: Fetches minimal track data using `namesearch` parameter
-- **Detail page**: Displays complete track information
-- **Audio playback**: Uses the `audio` field from API response
+- **Home screen**: Uses `useSearchTracksQuery` hook to fetch minimal track data (id, name, artist_name, image) using `namesearch` parameter
+- **Track detail screen**: Uses `useGetTrackDetailQuery` hook to fetch complete track information including audio URL, metadata, and licensing details
 - **Caching**: RTK Query automatically caches responses and manages loading states
+- **Debounced search**: Search input is debounced to reduce API calls
 
 API Documentation: https://developer.jamendo.com/v3.0/tracks
 
 ## Features
 
 - **Text-based music search** - Real-time search with debounced input
-- **Animated track details** - Smooth header animations with opacity transitions using Reanimated
-- **Dual audio players** - Two different player UI styles for versatile playback experience
+- **Animated track details** - Scroll-driven header animations with opacity fade and blur effects using Reanimated
+- **Track navigation** - Tap any track to view full details with seamless route transition
+- **Audio playback** - ExpoAudioPlayer component with play/pause controls, album art, and metadata display (secondary AudioProPlayer component available for future use)
+- **Rich track metadata** - Display track details including album, duration, genres, instruments, tags, language, vocal gender, license, and lyrics
 - **High-performance lists** - FlashList for smooth scrolling of large track catalogs
 - **Optimized images** - Expo Image with automatic caching and blur placeholders
 - **Smart API usage** - Minimal data on list view, full details on demand
+- **Debounced search input** - Smart input handling that reduces API calls while typing
 - **State management** - Redux Toolkit with RTK Query for efficient data fetching and caching
 - **Cross-platform** - Runs on iOS, Android, and web
 
