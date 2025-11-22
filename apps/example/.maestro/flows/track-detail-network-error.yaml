@@ -1,0 +1,37 @@
+# Feature: spec/features/build-track-detail-page-with-dual-audio-players.feature
+# Scenario: Handle network error when loading track
+
+appId: com.anonymous.jamendo
+---
+# @step Given I am on the app
+# @step And the network request will fail
+# Note: This requires network mocking or airplane mode
+- launchApp:
+    clearState: true
+
+# Enable airplane mode to simulate network error
+- runScript: adb shell cmd connectivity airplane-mode enable
+
+# @step When I navigate to "/track/12345"
+- tapOn: "Track 12345"
+
+# @step Then I should see a skeleton loading state
+# Note: May be too fast to assert
+
+# @step And the skeleton should disappear after the request fails
+- waitForAnimationToEnd:
+    timeout: 5000
+
+# @step And I should see the error message "Failed to load track details. Please try again."
+- assertVisible: "Failed to load track details. Please try again."
+
+# @step And I should not see the audio player
+- assertNotVisible:
+    id: "expo-audio-player"
+
+# @step And I should not see track information
+- assertNotVisible:
+    id: "track-info"
+
+# Restore network connection
+- runScript: adb shell cmd connectivity airplane-mode disable

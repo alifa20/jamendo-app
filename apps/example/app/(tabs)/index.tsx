@@ -18,7 +18,7 @@ export default function HomeScreen() {
     skip: searchQuery.length === 0,
   });
 
-  const tracks = searchQuery.length > 0 ? data?.results || [] : [];
+  const tracks = data?.results || [];
 
   const handleTrackPress = (trackId: string) => {
     router.push(`/track/${trackId}` as any); // TODO: Add track detail route file for proper typing

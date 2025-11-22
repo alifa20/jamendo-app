@@ -18,8 +18,7 @@
   "dependencies": {
     "@jamendo/ui": "workspace:*",
     "@shopify/flash-list": "^1.7.2",
-    "expo-audio": "~1.0.14",
-    "react-native-audio-pro": "^10.1.2"
+    "expo-audio": "~1.0.14"
   },
   "devDependencies": {
     "@jamendo/eslint-config": "workspace:*",

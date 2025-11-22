@@ -1,0 +1,8 @@
+# Maestro configuration for Jamendo App Example
+appId: com.anonymous.jamendo
+---
+# Default environment variables
+env:
+  APP_ID: com.anonymous.jamendo
+  TEST_TRACK_ID: "12345"
+  INVALID_TRACK_ID: "invalid-id"

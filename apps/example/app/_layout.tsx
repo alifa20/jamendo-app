@@ -19,7 +19,21 @@ export default function RootLayout() {
       <Provider store={store}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+          <Stack.Screen
+            name="modal"
+            options={{
+              presentation: 'card',
+              title: 'Modal',
+              headerShown: true,
+            }}
+          />
+          <Stack.Screen
+            name="track/[id]"
+            options={{
+              title: 'Track Detail',
+              headerBackTitle: 'Back',
+            }}
+          />
         </Stack>
         <StatusBar style="auto" />
       </Provider>

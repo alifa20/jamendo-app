@@ -82,19 +82,6 @@ For more information, see:
 - [Maestro with Expo Guide](https://maestro.mobile.dev/blog/pokedex-ui-testing-series-getting-started-with-maestro-in-expo-react-native-part-1)
 - [EAS Workflows with E2E Tests](https://docs.expo.dev/eas/workflows/examples/e2e-tests/)
 
-## Integration with fspec
-
-E2E tests are run automatically as part of the quality check phase in the ACDD workflow:
-
-```bash
-fspec update-work-unit-status JAM-006 validating
-```
-
-This will run:
-1. `pnpm lint` - ESLint checks
-2. `pnpm build` - TypeScript compilation
-3. `pnpm test:e2e` - Maestro E2E tests
-
 ## CI/CD Integration
 
 For EAS Build integration with Maestro, see:

@@ -1,0 +1,17 @@
+{
+  "version": "0.7.1",
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-11-21T23:01:58.161Z"
+  },
+  "workUnits": {},
+  "states": {
+    "backlog": [],
+    "specifying": [],
+    "testing": [],
+    "implementing": [],
+    "validating": [],
+    "done": [],
+    "blocked": []
+  }
+}

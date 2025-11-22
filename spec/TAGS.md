@@ -37,6 +37,7 @@ Functional area tags
 | `@dependency-management` | Package and dependency management features |
 | `@feature-home` | Home screen features including search and track listing |
 | `@state-management` | State management and Redux integration features |
+| `@ui-features` | User interface pages, screens, and interactive components |
 
 ### Technical Tags
 
@@ -44,8 +45,10 @@ Technical concern tags
 
 | Tag | Description |
 |-----|-------------|
+| `@audio` | Audio playback and player components |
 | `@configuration` | Configuration files and environment setup |
 | `@environment` | Environment variables and runtime configuration |
+| `@expo` | Expo framework features and integrations |
 | `@monorepo` | Monorepo-specific features and configurations |
 | `@redux` | Redux and Redux Toolkit implementation |
 | `@rtk-query` | Redux Toolkit Query for API state management |
