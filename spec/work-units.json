@@ -1334,12 +1334,6 @@
   "states": {
     "backlog": [
       "COMP-001",
-<<<<<<< HEAD
-      "JAM-006",
-=======
-      "JAM-003",
-      "JAM-007",
->>>>>>> origin/main
       "JAM-008",
       "JAM-009"
     ],
@@ -1348,12 +1342,9 @@
     "implementing": [],
     "validating": [],
     "done": [
-<<<<<<< HEAD
       "JAM-007",
-      "JAM-003",
-=======
       "JAM-006",
->>>>>>> origin/main
+      "JAM-003",
       "JAM-001",
       "JAM-005",
       "JAM-004",
