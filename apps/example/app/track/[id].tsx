@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   albumArt: {
     width: '100%',
-    height: 200,
+    height: 280,
     borderRadius: 8,
     marginBottom: 16,
   },
