@@ -1,5 +1,5 @@
 import { useAudioPlayer, AudioSource } from 'expo-audio';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 export interface ExpoAudioPlayerProps {
