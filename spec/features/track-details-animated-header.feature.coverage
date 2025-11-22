@@ -1,0 +1,246 @@
+{
+  "scenarios": [
+    {
+      "name": "Header image displays at full opacity when screen loads",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/track-details-animated-header.test.tsx",
+          "lines": "227-245",
+          "implMappings": [
+            {
+              "file": "packages/ui/src/AnimatedTrackHeader.tsx",
+              "lines": [
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Header image fades as user scrolls down",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/track-details-animated-header.test.tsx",
+          "lines": "250-278",
+          "implMappings": [
+            {
+              "file": "packages/ui/src/AnimatedTrackHeader.tsx",
+              "lines": [
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Header image becomes fully transparent at scroll threshold",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/track-details-animated-header.test.tsx",
+          "lines": "283-310",
+          "implMappings": [
+            {
+              "file": "packages/ui/src/AnimatedTrackHeader.tsx",
+              "lines": [
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Animation is reversible when user scrolls back up",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/track-details-animated-header.test.tsx",
+          "lines": "315-348",
+          "implMappings": [
+            {
+              "file": "packages/ui/src/AnimatedTrackHeader.tsx",
+              "lines": [
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scroll position controls opacity linearly",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/track-details-animated-header.test.tsx",
+          "lines": "353-390",
+          "implMappings": [
+            {
+              "file": "packages/ui/src/AnimatedTrackHeader.tsx",
+              "lines": [
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Animation responds immediately to scroll without momentum",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/track-details-animated-header.test.tsx",
+          "lines": "395-431",
+          "implMappings": [
+            {
+              "file": "packages/ui/src/AnimatedTrackHeader.tsx",
+              "lines": [
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Overlaid controls fade with header image opacity",
+      "testMappings": [
+        {
+          "file": "apps/example/app/__tests__/track-details-animated-header.test.tsx",
+          "lines": "436-481",
+          "implMappings": [
+            {
+              "file": "packages/ui/src/AnimatedTrackHeader.tsx",
+              "lines": [
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalScenarios": 7,
+    "coveredScenarios": 7,
+    "coveragePercent": 100,
+    "testFiles": [
+      "apps/example/app/__tests__/track-details-animated-header.test.tsx"
+    ],
+    "implFiles": [
+      "packages/ui/src/AnimatedTrackHeader.tsx"
+    ],
+    "totalLinesCovered": 349
+  }
+}

@@ -2,7 +2,7 @@
   "version": "0.7.1",
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2025-11-22T06:15:16.585Z"
+    "lastUpdated": "2025-11-22T08:23:04.316Z"
   },
   "workUnits": {
     "FOUND-001": {
@@ -1424,30 +1424,183 @@
       "id": "JAM-011",
       "title": "Track Details with Animated Header Image",
       "type": "task",
-      "status": "backlog",
+      "status": "done",
       "createdAt": "2025-11-22T07:49:33.326Z",
-      "updatedAt": "2025-11-22T07:49:33.326Z",
+      "updatedAt": "2025-11-22T08:23:04.320Z",
       "description": "Implement track details screen with animated header image that fades in as user scrolls, using dual-image fade pattern with React Native Reanimated. Includes TrackDetailView, AnimatedTrackHeader, TrackMetadata, and TrackPlayerControls components. Uses existing RTK Query hook for data fetching. See docs/track-details-animation.md for complete architecture.",
       "epic": "jamendo-app",
-      "children": []
+      "children": [],
+      "stateHistory": [
+        {
+          "state": "specifying",
+          "timestamp": "2025-11-22T07:55:43.677Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-22T08:12:47.137Z"
+        },
+        {
+          "state": "validating",
+          "timestamp": "2025-11-22T08:21:13.044Z"
+        },
+        {
+          "state": "done",
+          "timestamp": "2025-11-22T08:23:04.320Z"
+        }
+      ],
+      "userStory": {
+        "role": "music listener",
+        "action": "view track details",
+        "benefit": "I see a beautiful animated header that reacts to my scrolling"
+      },
+      "questions": [
+        {
+          "id": 0,
+          "text": "@human: What happens when user scrolls?",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:04:39.388Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Header image fades from opaque to transparent as user scrolls down"
+        },
+        {
+          "id": 1,
+          "text": "@human: When does the animation start?",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:04:43.790Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Animation starts immediately when the track details screen loads"
+        },
+        {
+          "id": 2,
+          "text": "@human: What are the two images in the dual-image fade?",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:04:49.133Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Full-quality image fades to blurred background image as user scrolls"
+        }
+      ],
+      "nextQuestionId": 3,
+      "rules": [
+        {
+          "id": 0,
+          "text": "Header image opacity decreases linearly with scroll position (0 opacity at top, decreases to full transparency after scrolling)",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:04:54.508Z"
+        },
+        {
+          "id": 1,
+          "text": "Blurred background image becomes progressively more visible as header image fades",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:04:56.820Z"
+        },
+        {
+          "id": 2,
+          "text": "Animation must run at 60fps with React Native Reanimated worklet functions for smooth performance",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:04:59.544Z"
+        },
+        {
+          "id": 3,
+          "text": "Header fade animation completes over a distance equal to the full header height",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:06:10.607Z"
+        },
+        {
+          "id": 4,
+          "text": "Animation follows scroll position directly without momentum-based auto-completion",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:06:14.384Z"
+        },
+        {
+          "id": 5,
+          "text": "Background image has fixed 10px blur radius throughout animation",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:06:16.636Z"
+        },
+        {
+          "id": 6,
+          "text": "Header image maintains fixed dimensions throughout animation - only opacity changes",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:07:05.134Z"
+        },
+        {
+          "id": 7,
+          "text": "TrackMetadata and TrackPlayerControls are overlaid on the header and fade out as user scrolls (opacity linked to header fade)",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:07:08.555Z"
+        }
+      ],
+      "nextRuleId": 8,
+      "examples": [
+        {
+          "id": 0,
+          "text": "User opens track details screen - large header image is fully visible and opaque (100% opacity)",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:05:04.549Z"
+        },
+        {
+          "id": 1,
+          "text": "User scrolls down 50 pixels - header image becomes 50% transparent, blurred background shows through at 50% opacity",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:05:06.970Z"
+        },
+        {
+          "id": 2,
+          "text": "User scrolls down 100 pixels - header image is fully transparent, blurred background is fully visible (100% opacity)",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:05:09.250Z"
+        },
+        {
+          "id": 3,
+          "text": "User scrolls back up to top - header image fades back to 100% opacity, blurred background fades out smoothly",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:05:11.658Z"
+        },
+        {
+          "id": 4,
+          "text": "User scrolls down to 1/4 header height - header opacity is at 75%, blurred background is at 25% opacity with 10px blur applied",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:06:20.303Z"
+        },
+        {
+          "id": 5,
+          "text": "User scrolls down to 2/3 height, pauses, then scrolls down more - animation immediately reflects new scroll position without auto-completing",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:06:23.610Z"
+        },
+        {
+          "id": 6,
+          "text": "TrackMetadata and play controls appear overlaid on the header image and fade out as header becomes transparent",
+          "deleted": false,
+          "createdAt": "2025-11-22T08:07:11.708Z"
+        }
+      ],
+      "nextExampleId": 7,
+      "estimate": 5,
+      "architectureNotes": [],
+      "nextNoteId": 0,
+      "updated": "2025-11-22T08:23:04.320Z"
     }
   },
   "states": {
     "backlog": [
       "COMP-001",
       "JAM-008",
-      "JAM-009",
-      "JAM-011"
+      "JAM-009"
     ],
     "specifying": [],
     "testing": [],
     "implementing": [],
     "validating": [],
     "done": [
+      "JAM-011",
       "JAM-010",
       "JAM-007",
-      "JAM-006",
       "JAM-003",
+      "JAM-006",
       "JAM-001",
       "JAM-005",
       "JAM-004",
