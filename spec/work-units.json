@@ -1329,13 +1329,23 @@
       "dependsOn": [
         "JAM-008"
       ]
+    },
+    "JAM-010": {
+      "id": "JAM-010",
+      "title": "Optimize CI pipeline - remove duplicate lint, typecheck, and build steps",
+      "type": "task",
+      "status": "backlog",
+      "createdAt": "2025-11-22T06:03:02.583Z",
+      "updatedAt": "2025-11-22T06:03:02.583Z",
+      "children": []
     }
   },
   "states": {
     "backlog": [
       "COMP-001",
       "JAM-008",
-      "JAM-009"
+      "JAM-009",
+      "JAM-010"
     ],
     "specifying": [],
     "testing": [],
@@ -1355,6 +1365,6 @@
   },
   "prefixCounters": {
     "COMP": 1,
-    "JAM": 9
+    "JAM": 10
   }
 }
