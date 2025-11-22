@@ -93,7 +93,7 @@ export default function HomeScreen() {
             />
           )}
 
-          {searchQuery.length === 0 && (
+          {searchQuery.length === 0 && !data && (
             <View style={styles.centerContent}>
               <ThemedText style={styles.emptyText}>
                 Search for tracks to discover music on Jamendo

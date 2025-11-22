@@ -19,15 +19,10 @@ export const ExpoAudioPlayer = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Sync local state with player state
-  useEffect(() => {
-    setIsPlaying(player.playing);
-  }, [player.playing]);
-
   const handlePlayPause = () => {
     try {
       setError(null);
-      if (player.playing) {
+      if (isPlaying) {
         player.pause();
         setIsPlaying(false);
       } else {
