@@ -5,6 +5,22 @@
  */
 
 /**
+ * Music information from Jamendo API (include=musicinfo)
+ */
+export interface JamendoMusicInfo {
+  vocalinstrumental?: string;
+  lang?: string;
+  gender?: string;
+  acousticelectric?: string;
+  speed?: string;
+  tags?: {
+    genres?: string[];
+    instruments?: string[];
+    vartags?: string[];
+  };
+}
+
+/**
  * Track data structure from Jamendo API
  */
 export interface JamendoTrack {
@@ -23,6 +39,8 @@ export interface JamendoTrack {
   releasedate: string;
   album_image: string;
   shareurl: string;
+  musicinfo?: JamendoMusicInfo;
+  lyrics?: string;
 }
 
 /**

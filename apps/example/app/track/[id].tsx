@@ -49,6 +49,12 @@ export default function TrackDetailPage() {
           </ThemedText>
 
           <View style={styles.detailsContainer}>
+            <ThemedText style={styles.detailLabel}>Album:</ThemedText>
+            <ThemedText style={styles.detailValue}>{track.album_name}</ThemedText>
+
+            <ThemedText style={styles.detailLabel}>Track Position:</ThemedText>
+            <ThemedText style={styles.detailValue}>#{track.position}</ThemedText>
+
             <ThemedText style={styles.detailLabel}>Release Date:</ThemedText>
             <ThemedText style={styles.detailValue}>{track.releasedate}</ThemedText>
 
@@ -64,8 +70,76 @@ export default function TrackDetailPage() {
               </>
             )}
 
+            {track.musicinfo?.tags?.instruments &&
+              track.musicinfo.tags.instruments.length > 0 && (
+                <>
+                  <ThemedText style={styles.detailLabel}>Instruments:</ThemedText>
+                  <ThemedText style={styles.detailValue}>
+                    {track.musicinfo.tags.instruments.join(', ')}
+                  </ThemedText>
+                </>
+              )}
+
+            {track.musicinfo?.tags?.vartags && track.musicinfo.tags.vartags.length > 0 && (
+              <>
+                <ThemedText style={styles.detailLabel}>Tags:</ThemedText>
+                <ThemedText style={styles.detailValue}>
+                  {track.musicinfo.tags.vartags.join(', ')}
+                </ThemedText>
+              </>
+            )}
+
+            {track.musicinfo?.vocalinstrumental && (
+              <>
+                <ThemedText style={styles.detailLabel}>Type:</ThemedText>
+                <ThemedText style={styles.detailValue}>
+                  {track.musicinfo.vocalinstrumental}
+                </ThemedText>
+              </>
+            )}
+
+            {track.musicinfo?.speed && (
+              <>
+                <ThemedText style={styles.detailLabel}>Speed:</ThemedText>
+                <ThemedText style={styles.detailValue}>{track.musicinfo.speed}</ThemedText>
+              </>
+            )}
+
+            {track.musicinfo?.acousticelectric && (
+              <>
+                <ThemedText style={styles.detailLabel}>Sound:</ThemedText>
+                <ThemedText style={styles.detailValue}>
+                  {track.musicinfo.acousticelectric}
+                </ThemedText>
+              </>
+            )}
+
+            {track.musicinfo?.lang && (
+              <>
+                <ThemedText style={styles.detailLabel}>Language:</ThemedText>
+                <ThemedText style={styles.detailValue}>{track.musicinfo.lang}</ThemedText>
+              </>
+            )}
+
+            {track.musicinfo?.gender && (
+              <>
+                <ThemedText style={styles.detailLabel}>Vocal Gender:</ThemedText>
+                <ThemedText style={styles.detailValue}>{track.musicinfo.gender}</ThemedText>
+              </>
+            )}
+
             <ThemedText style={styles.detailLabel}>License:</ThemedText>
             <ThemedText style={styles.detailValue}>{track.license_ccurl}</ThemedText>
+
+            <ThemedText style={styles.detailLabel}>Share URL:</ThemedText>
+            <ThemedText style={styles.detailValue}>{track.shareurl}</ThemedText>
+
+            {track.lyrics && (
+              <>
+                <ThemedText style={styles.detailLabel}>Lyrics:</ThemedText>
+                <ThemedText style={styles.detailValue}>{track.lyrics}</ThemedText>
+              </>
+            )}
           </View>
         </View>
       </ScrollView>
