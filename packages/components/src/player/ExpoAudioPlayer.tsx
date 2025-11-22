@@ -19,17 +19,6 @@ export const ExpoAudioPlayer = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Listen for errors
-    const errorListener = player.addListener('error', () => {
-      setError('An error occurred while loading audio');
-    });
-
-    return () => {
-      errorListener.remove();
-    };
-  }, [player]);
-
   // Sync local state with player state
   useEffect(() => {
     setIsPlaying(player.playing);
