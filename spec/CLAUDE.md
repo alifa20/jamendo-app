@@ -1129,7 +1129,7 @@ Before creating a pull request:
 3. **Tag Validation**: `fspec validate-tags` must pass (all tags exist in spec/TAGS.md or spec/tags.json)
 4. **Test Coverage**: Each scenario must have corresponding test(s)
 5. **Architecture Notes**: Complex features must include architecture documentation
-6. **Build & Tests**: `<quality-check-commands>` and `pnpm test` must pass
+6. **Build & Tests**: `pnpm lint && pnpm build && pnpm test:e2e` and `pnpm test` must pass
 
 ## Writing Effective Scenarios
 
@@ -1239,7 +1239,7 @@ describe('Feature: Create Feature File with Template', () => {
 5. **Validate**: Run `fspec validate` and `fspec validate-tags` to ensure correctness
 6. **Implement**: Write code to make tests pass
 7. **Verify**: Run `pnpm test` to ensure all tests pass
-8. **Build**: Run `<quality-check-commands>` to ensure quality standards met
+8. **Build**: Run `pnpm lint && pnpm build && pnpm test:e2e` to ensure quality standards met
 9. **Commit**: Include feature file, test changes, and implementation
 
 ## Using fspec to Manage Its Own Specifications
@@ -1592,7 +1592,7 @@ Virtual hooks are stored in `spec/work-units.json` under `workUnit.virtualHooks`
         {
           "name": "eslint",
           "event": "post-implementing",
-          "command": "<quality-check-commands>",
+          "command": "pnpm lint && pnpm build && pnpm test:e2e",
           "blocking": true,
           "gitContext": false
         },
@@ -1622,7 +1622,7 @@ Virtual hooks are stored in `spec/work-units.json` under `workUnit.virtualHooks`
 
 ```bash
 # Basic virtual hook (simple command)
-fspec add-virtual-hook AUTH-001 post-implementing "<quality-check-commands>" --blocking
+fspec add-virtual-hook AUTH-001 post-implementing "pnpm lint && pnpm build && pnpm test:e2e" --blocking
 
 # Git context hook (processes staged/unstaged files)
 fspec add-virtual-hook AUTH-001 pre-validating "eslint" --git-context --blocking
@@ -1661,14 +1661,14 @@ Within each category, hooks execute in the order they were added (array order).
 
 **Example**:
 ```bash
-# Work unit AUTH-001 has virtual hook: "<quality-check-commands>"
+# Work unit AUTH-001 has virtual hook: "pnpm lint && pnpm build && pnpm test:e2e"
 # Global hooks have: "fspec validate"
 
 # When moving AUTH-001 to validating:
 fspec update-work-unit-status AUTH-001 validating
 
 # Execution order:
-# 1. AUTH-001 virtual hook: <quality-check-commands>
+# 1. AUTH-001 virtual hook: pnpm lint && pnpm build && pnpm test:e2e
 # 2. Global hook: fspec validate
 ```
 
@@ -1727,7 +1727,7 @@ eslint $ALL_FILES
 **Example**:
 ```bash
 # Blocking - prevents validating if lint fails
-fspec add-virtual-hook AUTH-001 pre-validating "<quality-check-commands>" --blocking
+fspec add-virtual-hook AUTH-001 pre-validating "pnpm lint && pnpm build && pnpm test:e2e" --blocking
 
 # Non-blocking - logs but doesn't prevent progression
 fspec add-virtual-hook AUTH-001 post-implementing "notify-script"

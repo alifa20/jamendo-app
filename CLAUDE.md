@@ -275,3 +275,4 @@ This project follows **ACDD (Acceptance Criteria Driven Development)** using fsp
 - do not mention messages  like this in git commit: 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
    Co-Authored-By: Claude <noreply@anthropic.com>
+- make sure you save ios-simulator mcp in @@ios-screenshots/  folder

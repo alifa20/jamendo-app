@@ -3,6 +3,13 @@
   "tools": {
     "test": {
       "command": "pnpm test"
+    },
+    "qualityCheck": {
+      "commands": [
+        "pnpm lint",
+        "pnpm build",
+        "pnpm test:e2e"
+      ]
     }
   }
 }

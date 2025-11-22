@@ -2,7 +2,7 @@
   "version": "0.7.1",
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2025-11-21T11:05:40.291Z"
+    "lastUpdated": "2025-11-21T12:04:51.117Z"
   },
   "workUnits": {
     "FOUND-001": {
@@ -757,9 +757,9 @@
       "id": "JAM-006",
       "title": "Build Home page with search and track results",
       "type": "story",
-      "status": "backlog",
+      "status": "done",
       "createdAt": "2025-11-21T09:26:45.533Z",
-      "updatedAt": "2025-11-21T09:27:29.895Z",
+      "updatedAt": "2025-11-21T12:04:51.128Z",
       "description": "Implement search screen at apps/example/app/(tabs)/index.tsx with SearchBar, RTK Query integration (useSearchTracksQuery), TrackList with FlashList, and navigation to track detail",
       "epic": "jamendo-app",
       "children": [],
@@ -768,7 +768,121 @@
         "JAM-003",
         "JAM-004",
         "JAM-005"
-      ]
+      ],
+      "stateHistory": [
+        {
+          "state": "specifying",
+          "timestamp": "2025-11-21T11:35:47.585Z"
+        },
+        {
+          "state": "testing",
+          "timestamp": "2025-11-21T11:42:13.371Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-21T12:00:57.144Z"
+        },
+        {
+          "state": "validating",
+          "timestamp": "2025-11-21T12:03:01.118Z"
+        },
+        {
+          "state": "done",
+          "timestamp": "2025-11-21T12:04:51.128Z"
+        }
+      ],
+      "userStory": {
+        "role": "music listener",
+        "action": "search for tracks and view results",
+        "benefit": "I can discover and explore music on Jamendo"
+      },
+      "rules": [
+        {
+          "id": 0,
+          "text": "Search bar must be visible at the top of the home screen",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:08.378Z"
+        },
+        {
+          "id": 1,
+          "text": "Track results must be displayed using FlashList for performance",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:09.139Z"
+        },
+        {
+          "id": 2,
+          "text": "Search must use RTK Query useSearchTracksQuery hook",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:09.880Z"
+        },
+        {
+          "id": 3,
+          "text": "Tapping a track must navigate to track detail screen",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:10.598Z"
+        }
+      ],
+      "nextRuleId": 4,
+      "examples": [
+        {
+          "id": 0,
+          "text": "User opens home screen and sees search bar with placeholder text 'Search tracks...'",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:19.312Z"
+        },
+        {
+          "id": 1,
+          "text": "User types 'jazz' in search bar and sees list of jazz tracks with titles, artists, and album art",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:20.069Z"
+        },
+        {
+          "id": 2,
+          "text": "User taps on a track from search results and is taken to track detail screen showing full track information",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:20.866Z"
+        },
+        {
+          "id": 3,
+          "text": "User searches for tracks and can scroll through results smoothly using FlashList",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:36:21.578Z"
+        }
+      ],
+      "nextExampleId": 4,
+      "architectureNotes": [
+        {
+          "id": 0,
+          "text": "Implementation will be in apps/example/app/(tabs)/index.tsx using Expo Router file-based navigation",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:40:49.522Z"
+        },
+        {
+          "id": 1,
+          "text": "Uses RTK Query useSearchTracksQuery hook from @jamendo/rtk-services package for API integration with Jamendo API",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:40:50.363Z"
+        },
+        {
+          "id": 2,
+          "text": "Track list uses FlashList from @shopify/flash-list for performant rendering of large lists",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:40:51.290Z"
+        },
+        {
+          "id": 3,
+          "text": "Navigation to track detail uses Expo Router's useRouter hook for programmatic navigation",
+          "deleted": false,
+          "createdAt": "2025-11-21T11:40:52.223Z"
+        }
+      ],
+      "nextNoteId": 4,
+      "attachments": [
+        "spec/attachments/JAM-006/ast-research-home-screen-structure.json"
+      ],
+      "questions": [],
+      "nextQuestionId": 0,
+      "updated": "2025-11-21T12:04:51.128Z"
     },
     "JAM-007": {
       "id": "JAM-007",
@@ -819,7 +933,6 @@
     "backlog": [
       "COMP-001",
       "JAM-003",
-      "JAM-006",
       "JAM-007",
       "JAM-008",
       "JAM-009"
@@ -829,9 +942,10 @@
     "implementing": [],
     "validating": [],
     "done": [
+      "JAM-006",
       "JAM-001",
-      "JAM-004",
       "JAM-005",
+      "JAM-004",
       "JAM-002",
       "FOUND-001"
     ],
