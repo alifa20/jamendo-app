@@ -55,10 +55,10 @@ export const ExpoAudioPlayer = ({
     <View style={styles.container}>
       <Image source={{ uri: albumArtUrl }} style={styles.albumArt} testID="album-art" />
       <View style={styles.metadataContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.artist}>{artistName}</Text>
+        <Text style={styles.title} numberOfLines={1}>{title}</Text>
+        <Text style={styles.artist} numberOfLines={1}>{artistName}</Text>
+        {error && <Text style={styles.error}>{error}</Text>}
       </View>
-      {error && <Text style={styles.error}>{error}</Text>}
       <TouchableOpacity
         style={styles.button}
         onPress={handlePlayPause}
@@ -73,42 +73,43 @@ export const ExpoAudioPlayer = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    flexDirection: 'row',
     alignItems: 'center',
+    padding: 12,
+    gap: 12,
   },
   albumArt: {
-    width: 200,
-    height: 200,
-    borderRadius: 8,
-    marginBottom: 16,
+    width: 60,
+    height: 60,
+    borderRadius: 4,
   },
   metadataContainer: {
-    alignItems: 'center',
-    marginBottom: 16,
+    flex: 1,
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 4,
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 2,
   },
   artist: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#666',
   },
   error: {
     color: 'red',
-    marginBottom: 8,
-    textAlign: 'center',
+    fontSize: 11,
+    marginTop: 2,
   },
   button: {
     backgroundColor: '#007AFF',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 6,
   },
   buttonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '600',
   },
 });

@@ -40,7 +40,6 @@ export default function TrackDetailPage() {
       >
         <View testID="track-info">
           <Image source={{ uri: track.image }} style={styles.albumArt} testID="album-art" />
-
           <ThemedText type="title" style={styles.title}>
             {track.name}
           </ThemedText>
@@ -71,14 +70,14 @@ export default function TrackDetailPage() {
         </View>
       </ScrollView>
 
-      <View style={styles.fixedPlayerContainer} testID="fixed-player-container">
+      <ThemedView style={styles.fixedPlayerContainer} testID="fixed-player-container">
         <ExpoAudioPlayer
           audioUrl={track.audio}
           title={track.name}
           artistName={track.artist_name}
           albumArtUrl={track.image}
         />
-      </View>
+      </ThemedView>
     </ThemedView>
   );
 }
@@ -97,12 +96,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: 120, // Space for fixed player
+    paddingBottom: 100, // Space for fixed player
     padding: 16,
   },
   albumArt: {
     width: '100%',
-    height: 300,
+    height: 200,
     borderRadius: 8,
     marginBottom: 16,
   },
@@ -132,6 +131,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     borderTopWidth: 1,
-    borderTopColor: '#ccc',
+    borderTopColor: '#e0e0e0',
   },
 });
