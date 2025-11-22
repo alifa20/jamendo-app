@@ -55,8 +55,12 @@ export const ExpoAudioPlayer = ({
     <View style={styles.container}>
       <Image source={{ uri: albumArtUrl }} style={styles.albumArt} testID="album-art" />
       <View style={styles.metadataContainer}>
-        <Text style={styles.title} numberOfLines={1}>{title}</Text>
-        <Text style={styles.artist} numberOfLines={1}>{artistName}</Text>
+        <Text style={styles.title} numberOfLines={1}>
+          {title}
+        </Text>
+        <Text style={styles.artist} numberOfLines={1}>
+          {artistName}
+        </Text>
         {error && <Text style={styles.error}>{error}</Text>}
       </View>
       <TouchableOpacity

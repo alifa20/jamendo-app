@@ -70,15 +70,14 @@ export default function TrackDetailPage() {
               </>
             )}
 
-            {track.musicinfo?.tags?.instruments &&
-              track.musicinfo.tags.instruments.length > 0 && (
-                <>
-                  <ThemedText style={styles.detailLabel}>Instruments:</ThemedText>
-                  <ThemedText style={styles.detailValue}>
-                    {track.musicinfo.tags.instruments.join(', ')}
-                  </ThemedText>
-                </>
-              )}
+            {track.musicinfo?.tags?.instruments && track.musicinfo.tags.instruments.length > 0 && (
+              <>
+                <ThemedText style={styles.detailLabel}>Instruments:</ThemedText>
+                <ThemedText style={styles.detailValue}>
+                  {track.musicinfo.tags.instruments.join(', ')}
+                </ThemedText>
+              </>
+            )}
 
             {track.musicinfo?.tags?.vartags && track.musicinfo.tags.vartags.length > 0 && (
               <>
