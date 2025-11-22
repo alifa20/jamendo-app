@@ -48,6 +48,10 @@
           "description": "API integration and external service connectivity"
         },
         {
+          "name": "@ci-optimization",
+          "description": "CI/CD pipeline optimization and workflow improvements"
+        },
+        {
           "name": "@dependency-management",
           "description": "Package and dependency management features"
         },
@@ -177,7 +181,7 @@
     "examples": []
   },
   "statistics": {
-    "lastUpdated": "2025-11-21T11:38:08.504Z",
+    "lastUpdated": "2025-11-22T06:15:38.936Z",
     "phaseStats": [],
     "componentStats": [],
     "featureGroupStats": [],

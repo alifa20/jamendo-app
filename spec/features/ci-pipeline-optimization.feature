@@ -1,3 +1,6 @@
+@ci-optimization
+@infrastructure
+@done
 @JAM-010
 Feature: Optimize CI pipeline - remove duplicate lint, typecheck, and build steps
   """
