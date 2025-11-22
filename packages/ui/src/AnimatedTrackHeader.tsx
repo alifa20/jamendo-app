@@ -123,8 +123,7 @@ export const AnimatedTrackHeader = React.forwardRef<View, AnimatedTrackHeaderPro
               position: 'absolute',
               top: 0,
               left: 0,
-              backgroundColor: '#999', // Simulates blurred effect
-              blurRadius: 10, // Fixed 10px blur throughout animation
+              backgroundColor: '#999', // Simulates blurred effect with color overlay
             },
             backgroundOpacityAnimatedStyle,
           ]}

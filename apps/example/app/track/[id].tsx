@@ -1,26 +1,16 @@
 import { ExpoAudioPlayer } from '@jamendo/components';
-import {
-  AnimatedTrackHeader,
-  TrackMetadata,
-  TrackPlayerControls,
-} from '@jamendo/ui';
 import { useGetTrackDetailQuery } from '@jamendo/rtk-services';
+import { AnimatedTrackHeader, TrackMetadata } from '@jamendo/ui';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
-import {
-  StyleSheet,
-  ScrollView,
-  Image,
-  View,
-  ActivityIndicator,
-  Text,
-} from 'react-native';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  interpolate,
-  Extrapolate,
-} from 'react-native-reanimated';
 import { useEffect } from 'react';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import Animated, {
+  Extrapolate,
+  interpolate,
+  SharedValue,
+  useAnimatedStyle,
+  useSharedValue,
+} from 'react-native-reanimated';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -59,7 +49,7 @@ function HeaderThumbnail({
   scrollPosition,
 }: {
   imageUri: string;
-  scrollPosition: Animated.SharedValue<number>;
+  scrollPosition: SharedValue<number>;
 }) {
   // Thumbnail opacity increases as header image fades (inverse relationship)
   // Stays hidden until 70% scrolled, then fades in quickly
@@ -128,9 +118,7 @@ export default function TrackDetailPage() {
     navigation.setOptions({
       headerTransparent: true,
       headerTitle: () => <HeaderTitle>Track Details</HeaderTitle>,
-      headerRight: () => (
-        <HeaderThumbnail imageUri={track.image} scrollPosition={scrollPosition} />
-      ),
+      headerRight: () => <HeaderThumbnail imageUri={track.image} scrollPosition={scrollPosition} />,
     });
   }, [track, navigation]);
 

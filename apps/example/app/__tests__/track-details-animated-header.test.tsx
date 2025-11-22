@@ -5,10 +5,16 @@
  * Tests the scroll-driven animation that fades header image and reveals blurred background
  */
 
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import Animated, { useSharedValue, useAnimatedStyle, interpolate, Extrapolate } from 'react-native-reanimated';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
+import Animated, {
+  Extrapolate,
+  interpolate,
+  SharedValue,
+  useAnimatedStyle,
+  useSharedValue,
+} from 'react-native-reanimated';
 
 // Mock components
 jest.mock('@jamendo/rtk-services', () => ({
@@ -24,14 +30,14 @@ jest.mock('@jamendo/components', () => ({
 }));
 
 jest.mock('@/components/themed-text', () => ({
-  ThemedText: ({ children, testID }: any) => (
-    <Text testID={testID}>{children}</Text>
-  ),
+  ThemedText: ({ children, testID }: any) => <Text testID={testID}>{children}</Text>,
 }));
 
 jest.mock('@/components/themed-view', () => ({
   ThemedView: ({ children, testID, style }: any) => (
-    <View testID={testID} style={style}>{children}</View>
+    <View testID={testID} style={style}>
+      {children}
+    </View>
   ),
 }));
 
@@ -67,39 +73,24 @@ const AnimatedHeaderTestComponent = ({
   scrollPosition,
   headerHeight = 200,
 }: {
-  scrollPosition: Animated.SharedValue<number>;
+  scrollPosition: SharedValue<number>;
   headerHeight?: number;
 }) => {
   const headerOpacity = useAnimatedStyle(() => {
     const maxScroll = headerHeight;
-    const opacity = interpolate(
-      scrollPosition.value,
-      [0, maxScroll],
-      [1, 0],
-      Extrapolate.CLAMP
-    );
+    const opacity = interpolate(scrollPosition.value, [0, maxScroll], [1, 0], Extrapolate.CLAMP);
     return { opacity };
   });
 
   const backgroundOpacity = useAnimatedStyle(() => {
     const maxScroll = headerHeight;
-    const opacity = interpolate(
-      scrollPosition.value,
-      [0, maxScroll],
-      [0, 1],
-      Extrapolate.CLAMP
-    );
+    const opacity = interpolate(scrollPosition.value, [0, maxScroll], [0, 1], Extrapolate.CLAMP);
     return { opacity };
   });
 
   const overlaidOpacity = useAnimatedStyle(() => {
     const maxScroll = headerHeight;
-    const opacity = interpolate(
-      scrollPosition.value,
-      [0, maxScroll],
-      [1, 0],
-      Extrapolate.CLAMP
-    );
+    const opacity = interpolate(scrollPosition.value, [0, maxScroll], [1, 0], Extrapolate.CLAMP);
     return { opacity };
   });
 
@@ -194,11 +185,7 @@ const ScrollableTrackDetails = ({ onScroll }: { onScroll: (offset: number) => vo
   };
 
   return (
-    <ScrollView
-      testID="track-details-scroll"
-      onScroll={handleScroll}
-      scrollEventThrottle={16}
-    >
+    <ScrollView testID="track-details-scroll" onScroll={handleScroll} scrollEventThrottle={16}>
       <AnimatedHeaderTestComponent scrollPosition={scrollPosition} headerHeight={headerHeight} />
       <View testID="track-info" style={{ padding: 16 }}>
         <Text testID="album-art-placeholder">Album Art</Text>
@@ -213,9 +200,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
   describe('Scenario: Header image displays at full opacity when screen loads', () => {
     it('should display header image at 100% opacity when track details screen is loaded', async () => {
       // @step Given the track details screen is loaded with track data
-      const { getByTestId } = render(
-        <ScrollableTrackDetails onScroll={jest.fn()} />
-      );
+      const { getByTestId } = render(<ScrollableTrackDetails onScroll={jest.fn()} />);
 
       // @step When the screen first appears
       const headerImage = getByTestId('header-image');
@@ -231,9 +216,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
   describe('Scenario: Header image fades as user scrolls down', () => {
     it('should decrease header image opacity and show background as user scrolls down', async () => {
       // @step Given the track details screen is open
-      const { getByTestId } = render(
-        <ScrollableTrackDetails onScroll={jest.fn()} />
-      );
+      const { getByTestId } = render(<ScrollableTrackDetails onScroll={jest.fn()} />);
 
       // @step And the header image is at 100% opacity
       const headerImage = getByTestId('header-image');
@@ -253,7 +236,6 @@ describe('Feature: Track Details with Animated Header Image', () => {
       });
 
       // @step And the blurred background image should appear at 50% opacity
-      const background = getByTestId('blurred-background');
       await waitFor(() => {
         const expectedBgOpacity = Math.min(1, scrollAmount / headerHeight);
         expect(expectedBgOpacity).toBeCloseTo(0.25, 1);
@@ -268,9 +250,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
   describe('Scenario: Header image becomes fully transparent at scroll threshold', () => {
     it('should reduce header opacity to 0% and show background fully at full scroll distance', async () => {
       // @step Given the track details screen is open
-      const { getByTestId } = render(
-        <ScrollableTrackDetails onScroll={jest.fn()} />
-      );
+      const { getByTestId } = render(<ScrollableTrackDetails onScroll={jest.fn()} />);
 
       const headerHeight = 200;
 
@@ -300,9 +280,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
   describe('Scenario: Animation is reversible when user scrolls back up', () => {
     it('should fade header back to full opacity and blurred background out smoothly when scrolling up', async () => {
       // @step Given the user has scrolled down to full transparency
-      const { getByTestId } = render(
-        <ScrollableTrackDetails onScroll={jest.fn()} />
-      );
+      const { getByTestId } = render(<ScrollableTrackDetails onScroll={jest.fn()} />);
 
       const headerHeight = 200;
       fireEvent.scroll(getByTestId('track-details-scroll'), {
@@ -341,9 +319,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
   describe('Scenario: Scroll position controls opacity linearly', () => {
     it('should control opacity linearly based on scroll position', async () => {
       // @step Given the track details screen is open
-      const { getByTestId } = render(
-        <ScrollableTrackDetails onScroll={jest.fn()} />
-      );
+      const { getByTestId } = render(<ScrollableTrackDetails onScroll={jest.fn()} />);
 
       // @step And the header height is 200 pixels
       const headerHeight = 200;
@@ -355,13 +331,13 @@ describe('Feature: Track Details with Animated Header Image', () => {
 
       // @step Then the header image opacity should be 75%
       await waitFor(() => {
-        const opacity = Math.max(0, 1 - (headerHeight / 4) / headerHeight);
+        const opacity = Math.max(0, 1 - headerHeight / 4 / headerHeight);
         expect(opacity).toBeCloseTo(0.75, 1);
       });
 
       // @step And the blurred background opacity should be 25%
       await waitFor(() => {
-        const opacity = Math.min(1, (headerHeight / 4) / headerHeight);
+        const opacity = Math.min(1, headerHeight / 4 / headerHeight);
         expect(opacity).toBeCloseTo(0.25, 1);
       });
 
@@ -374,9 +350,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
   describe('Scenario: Animation responds immediately to scroll without momentum', () => {
     it('should maintain opacity state when user pauses and immediately reflect new position when continuing', async () => {
       // @step Given the user has scrolled to 2/3 of the header height
-      const { getByTestId } = render(
-        <ScrollableTrackDetails onScroll={jest.fn()} />
-      );
+      const { getByTestId } = render(<ScrollableTrackDetails onScroll={jest.fn()} />);
 
       const headerHeight = 200;
       const scrollAmount = (headerHeight * 2) / 3;
@@ -388,7 +362,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
       const expectedOpacity = Math.max(0, 1 - scrollAmount / headerHeight);
 
       // @step When the user pauses scrolling momentarily
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
 
       // @step Then the animation should maintain the current opacity state
       expect(expectedOpacity).toBeCloseTo(0.333, 1);
@@ -412,9 +386,7 @@ describe('Feature: Track Details with Animated Header Image', () => {
   describe('Scenario: Overlaid controls fade with header image opacity', () => {
     it('should sync metadata and controls opacity with header image opacity', async () => {
       // @step Given the track details screen is open
-      const { getByTestId } = render(
-        <ScrollableTrackDetails onScroll={jest.fn()} />
-      );
+      const { getByTestId } = render(<ScrollableTrackDetails onScroll={jest.fn()} />);
 
       const headerHeight = 200;
 
