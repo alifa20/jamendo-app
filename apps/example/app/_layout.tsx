@@ -30,8 +30,11 @@ export default function RootLayout() {
           <Stack.Screen
             name="track/[id]"
             options={{
-              title: 'Track Detail',
+              title: 'Track Details',
               headerBackTitle: 'Back',
+              headerTransparent: true,
+              headerShadowVisible: false,
+              headerStyle: { backgroundColor: 'transparent' },
             }}
           />
         </Stack>

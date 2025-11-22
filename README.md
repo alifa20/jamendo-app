@@ -11,6 +11,8 @@ This app demonstrates a Redux-based music browsing and playback experience with 
 
 **Note**: This project was kick-started from an existing Expo monorepo template to accelerate development setup.
 
+https://github.com/user-attachments/assets/e2f60dc0-6f83-40d2-bb59-6988506fcce3
+
 ## Tech Stack
 
 - **Expo** - Cross-platform app framework
