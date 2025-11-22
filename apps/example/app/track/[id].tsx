@@ -180,7 +180,7 @@ export default function TrackDetailPage() {
             artistName={track.artist_name}
             testID="header-metadata"
           />
-          <TrackPlayerControls testID="header-controls" />
+          {/* <TrackPlayerControls testID="header-controls" /> */}
         </AnimatedTrackHeader>
 
         <View testID="track-info">
