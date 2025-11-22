@@ -2,7 +2,7 @@
   "version": "0.7.1",
   "meta": {
     "version": "1.0.0",
-    "lastUpdated": "2025-11-21T12:04:51.117Z"
+    "lastUpdated": "2025-11-22T06:15:16.585Z"
   },
   "workUnits": {
     "FOUND-001": {
@@ -932,10 +932,91 @@
       "id": "JAM-010",
       "title": "Optimize CI pipeline - remove duplicate lint, typecheck, and build steps",
       "type": "task",
-      "status": "backlog",
+      "status": "done",
       "createdAt": "2025-11-22T06:03:02.583Z",
-      "updatedAt": "2025-11-22T06:03:02.583Z",
-      "children": []
+      "updatedAt": "2025-11-22T06:15:16.595Z",
+      "children": [],
+      "stateHistory": [
+        {
+          "state": "specifying",
+          "timestamp": "2025-11-22T06:09:31.561Z"
+        },
+        {
+          "state": "implementing",
+          "timestamp": "2025-11-22T06:12:37.132Z"
+        },
+        {
+          "state": "validating",
+          "timestamp": "2025-11-22T06:13:58.676Z"
+        },
+        {
+          "state": "done",
+          "timestamp": "2025-11-22T06:15:16.595Z"
+        }
+      ],
+      "userStory": {
+        "role": "DevOps Engineer",
+        "action": "optimize the CI pipeline by removing duplicate steps",
+        "benefit": "reduce CI runtime and improve workflow efficiency"
+      },
+      "rules": [
+        {
+          "id": 0,
+          "text": "Lint and typecheck are duplicated in both test.yml and preview.yml workflows",
+          "deleted": false,
+          "createdAt": "2025-11-22T06:10:46.273Z"
+        },
+        {
+          "id": 1,
+          "text": "Both workflows should use a shared job or reusable workflow for lint and typecheck",
+          "deleted": false,
+          "createdAt": "2025-11-22T06:10:46.897Z"
+        },
+        {
+          "id": 2,
+          "text": "Each workflow file (test.yml, preview.yml) should be optimized to remove redundancy",
+          "deleted": false,
+          "createdAt": "2025-11-22T06:10:47.513Z"
+        }
+      ],
+      "nextRuleId": 3,
+      "examples": [
+        {
+          "id": 0,
+          "text": "test.yml has a 'lint-and-typecheck' job that is duplicated identically in preview.yml",
+          "deleted": false,
+          "createdAt": "2025-11-22T06:10:51.197Z"
+        },
+        {
+          "id": 1,
+          "text": "After optimization, both workflows reference the same reusable workflow file or shared job template",
+          "deleted": false,
+          "createdAt": "2025-11-22T06:10:51.809Z"
+        },
+        {
+          "id": 2,
+          "text": "test.yml build job depends on lint-and-typecheck; preview.yml example job depends on lint-and-typecheck",
+          "deleted": false,
+          "createdAt": "2025-11-22T06:10:52.428Z"
+        }
+      ],
+      "nextExampleId": 3,
+      "questions": [
+        {
+          "id": 0,
+          "text": "@human: Should we use a reusable workflow file (.github/workflows/lint-and-typecheck.yml) or extract it into a separate workflow that other workflows call with 'uses:'?",
+          "deleted": false,
+          "createdAt": "2025-11-22T06:10:56.694Z",
+          "selected": true,
+          "answered": true,
+          "answer": "Use a reusable workflow file (.github/workflows/lint-and-typecheck.yml) that both test.yml and preview.yml call via 'uses:' to centralize the shared quality checks"
+        }
+      ],
+      "nextQuestionId": 1,
+      "estimate": 5,
+      "architectureNotes": [],
+      "nextNoteId": 0,
+      "updated": "2025-11-22T06:15:16.595Z"
     }
   },
   "states": {
@@ -944,14 +1025,14 @@
       "JAM-003",
       "JAM-007",
       "JAM-008",
-      "JAM-009",
-      "JAM-010"
+      "JAM-009"
     ],
     "specifying": [],
     "testing": [],
     "implementing": [],
     "validating": [],
     "done": [
+      "JAM-010",
       "JAM-006",
       "JAM-001",
       "JAM-005",
