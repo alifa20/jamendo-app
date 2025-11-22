@@ -7,11 +7,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Follow conventional commit format with scope for monorepo packages:
 
 - **Format**: `type(scope): description`
-- **Scopes**: Use folder names from `packages/` or `apps/` (e.g., `fix(feature-home)`, `feat(example)`)
+- **Scopes**: Use folder names from `packages/` or `apps/` (e.g., `fix(components)`, `feat(example)`, `feat(rtk-services)`)
 - **Examples**:
-  - `fix(feature-home): resolve navigation issue`
+  - `fix(components): resolve audio player pause issue`
   - `feat(ui): add new button component`
+  - `feat(rtk-services): add track details query endpoint`
   - `docs(example): update API integration notes`
+  - `test(components): add search component tests`
 
 ## Commands
 
@@ -49,8 +51,14 @@ pnpm build:example
 # Run linter
 pnpm lint
 
+# Run TypeScript type checking
+pnpm typecheck
+
 # Run tests
 pnpm test
+
+# Run E2E tests with Maestro
+pnpm --filter @jamendo/app-example test:maestro
 ```
 
 ### fspec (Specification Management)
@@ -81,19 +89,26 @@ fspec format                             # Format feature files
 This is a Turborepo-based monorepo using pnpm workspaces:
 
 - **`apps/example`**: Main Jamendo music app (Expo/React Native)
-- **`packages/feature-home`**: Home screen features (search, track listing)
+- **`packages/components`**: App-specific components (audio players, search, track components)
+- **`packages/rtk-services`**: Redux Toolkit Query services for Jamendo API integration
 - **`packages/ui`**: Shared UI components
 - **`packages/eslint-config`**: Shared ESLint configuration
 
 ### Technology Stack
 
-- **Expo 54.x**: Cross-platform framework (iOS/Android/Web)
+- **Expo ~54.0.6**: Cross-platform framework (iOS/Android/Web)
 - **React 19.1.0**: UI library
 - **React Native 0.81.4**: Mobile runtime
-- **Expo Router 6.x**: File-based navigation (app directory)
+- **Expo Router ~6.0.3**: File-based navigation (app directory)
+- **Redux Toolkit**: State management with RTK Query for API data fetching and caching
+- **React Native Reanimated ~4.1.0**: Smooth 60fps animations
+- **FlashList**: High-performance list rendering
+- **Expo Audio**: Media playback
+- **Expo Image**: Optimized image loading with caching
 - **pnpm**: Package manager
 - **Turborepo**: Monorepo build orchestration
 - **Jest**: Testing framework
+- **Maestro**: End-to-end testing
 
 ### Navigation
 
@@ -109,38 +124,55 @@ Navigation anchor is set to `(tabs)` directory via `unstable_settings.anchor`.
 ### Package Dependencies
 
 **Workspace Protocol**: Internal packages use `workspace:*` protocol in package.json:
-- `@jamendo/feature-home` → depends on `@jamendo/ui`
-- `@jamendo/app-example` → depends on `@jamendo/feature-home`
+- `@jamendo/components` → depends on `@jamendo/ui`
+- `@jamendo/rtk-services` → standalone package (no internal dependencies)
+- `@jamendo/app-example` → depends on `@jamendo/components`, `@jamendo/rtk-services`, and `@jamendo/ui`
 
 **Build Order**: Turborepo handles dependency graph (`dependsOn: ["^build"]` in turbo.json)
 
 ### API Integration
 
 - **Jamendo API v3.0**: Track search and playback
+- **API Layer**: `@jamendo/rtk-services` package handles all API calls using RTK Query
+- **Main Hooks**:
+  - `useSearchTracksQuery` - Fetch minimal track data for search results
+  - `useGetTrackDetailQuery` - Fetch complete track information including audio URL and metadata
 - **Endpoint**: `https://api.jamendo.com/v3.0/tracks`
 - **Environment**: `EXPO_PUBLIC_JAMENDO_CLIENT_ID` required (create `.env` in app directory)
 - **Documentation**: https://developer.jamendo.com/v3.0/tracks
+- **Features**: Automatic caching, loading states, and request deduplication via RTK Query
 
 ### State Management
 
-Project is designed for Redux (mentioned in README), but current implementation may vary. Check `packages/feature-home/src/` for actual state management approach.
+The app uses **Redux Toolkit** with **RTK Query** for state management:
+- **Store**: Configured in `@jamendo/rtk-services/src/store.ts`
+- **API Services**: Jamendo API integration in `@jamendo/rtk-services/src/api/`
+- **Data Fetching**: RTK Query hooks provide automatic caching and request management
+- **Integration**: Redux provider configured in app root layout (`apps/example/app/_layout.tsx`)
 
 ## Development Guidelines
 
 ### Adding New Features
 
 1. **Create work unit** using fspec (see `spec/CLAUDE.md`)
-2. **Shared features**: Add to `packages/feature-home/src/`
-3. **App-specific**: Add to `apps/example/app/`
-4. **UI components**: Add to `packages/ui/src/`
-5. **Follow ACDD workflow**: Example Mapping → Gherkin specs → Tests → Implementation
+2. **App-specific components**: Add to `packages/components/src/` (e.g., audio players, search components, track components)
+3. **API services**: Add to `packages/rtk-services/src/api/` (RTK Query endpoints and services)
+4. **UI components**: Add to `packages/ui/src/` (shared, reusable UI components)
+5. **App-specific screens/routes**: Add to `apps/example/app/` (Expo Router screens and layouts)
+6. **Follow ACDD workflow**: Example Mapping → Gherkin specs → Tests → Implementation
 
 ### Testing
 
-- **Test location**: Co-locate tests with source (`__tests__/` directories)
-- **Jest preset**: `jest-expo` for React Native compatibility
-- **Coverage**: Link tests to Gherkin scenarios using `fspec link-coverage`
-- **Run tests**: `pnpm test` (runs across all packages via Turborepo)
+- **Unit/Integration Tests**:
+  - **Test location**: Co-locate tests with source (`__tests__/` directories)
+  - **Jest preset**: `jest-expo` for React Native compatibility
+  - **Coverage**: Link tests to Gherkin scenarios using `fspec link-coverage`
+  - **Run tests**: `pnpm test` (runs across all packages via Turborepo)
+- **E2E Tests**:
+  - **Framework**: Maestro for end-to-end testing
+  - **Flow files**: Located in `apps/example/.maestro/flows/`
+  - **Run E2E tests**: `pnpm --filter @jamendo/app-example test:maestro`
+  - **Run single test**: `pnpm --filter @jamendo/app-example test:single <flow-file>`
 
 ### TypeScript
 
@@ -197,7 +229,8 @@ Defined in `turbo.json`:
 - **`build`**: Depends on upstream packages (`^build`), outputs to `build/` and metro cache
 - **`dev`**: Interactive, persistent, no cache
 - **`lint`**: No outputs
-- **test**: Inputs are `**/*.{ts,tsx,js,jsx}` files
+- **`typecheck`**: No outputs (TypeScript type checking)
+- **`test`**: Inputs are `**/*.{ts,tsx,js,jsx}` files
 
 ### Task Execution
 
@@ -215,7 +248,8 @@ turbo dev --filter="{./apps/example}..."
 
 - **Scoped packages**: All use `@jamendo/` scope
 - **App naming**: `@jamendo/app-{name}` (e.g., `@jamendo/app-example`)
-- **Feature naming**: `@jamendo/feature-{name}`
+- **Component packages**: `@jamendo/components` (app-specific components)
+- **Service packages**: `@jamendo/rtk-services` (Redux Toolkit Query API services)
 - **Shared packages**: `@jamendo/{name}` (ui, eslint-config)
 
 ### File Naming
@@ -229,9 +263,15 @@ turbo dev --filter="{./apps/example}..."
 Packages use barrel exports (index.ts) for cleaner imports:
 
 ```typescript
-// packages/feature-home/src/index.ts
-export * from './HomeMessage';
-export * from './HomeMessageIcon';
+// packages/components/src/index.ts
+export * from './player';
+export * from './search';
+export * from './track';
+
+// packages/rtk-services/src/index.ts
+export * from './api';
+export * from './store';
+export * from './types';
 ```
 
 ## fspec Integration
