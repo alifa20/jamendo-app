@@ -1419,13 +1419,25 @@
       "architectureNotes": [],
       "nextNoteId": 0,
       "updated": "2025-11-22T06:15:16.595Z"
+    },
+    "JAM-011": {
+      "id": "JAM-011",
+      "title": "Track Details with Animated Header Image",
+      "type": "task",
+      "status": "backlog",
+      "createdAt": "2025-11-22T07:49:33.326Z",
+      "updatedAt": "2025-11-22T07:49:33.326Z",
+      "description": "Implement track details screen with animated header image that fades in as user scrolls, using dual-image fade pattern with React Native Reanimated. Includes TrackDetailView, AnimatedTrackHeader, TrackMetadata, and TrackPlayerControls components. Uses existing RTK Query hook for data fetching. See docs/track-details-animation.md for complete architecture.",
+      "epic": "jamendo-app",
+      "children": []
     }
   },
   "states": {
     "backlog": [
       "COMP-001",
       "JAM-008",
-      "JAM-009"
+      "JAM-009",
+      "JAM-011"
     ],
     "specifying": [],
     "testing": [],
@@ -1446,6 +1458,6 @@
   },
   "prefixCounters": {
     "COMP": 1,
-    "JAM": 10
+    "JAM": 11
   }
 }
